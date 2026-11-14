@@ -14,7 +14,7 @@ val fabricLoaderVersion: String by project
 val fabricApiVersion: String by project
 
 base {
-    archivesName.set("Ad-Astra-Beyond-The-Horizons")
+    archivesName.set("BeyondTheHorizons")
 }
 
 repositories {
@@ -102,5 +102,5 @@ java {
 }
 
 tasks.named<AbstractArchiveTask>("neoforgeIncludeJar") {
-    archiveFileName.set("Ad-Astra-Beyond-The-Horizons-neoforge-$minecraftVersion-${project.version}.jar")
+    archiveFileName.set("BeyondTheHorizons-neoforge-$minecraftVersion-${project.version}.jar")
 }

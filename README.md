@@ -43,7 +43,7 @@ On Linux/macOS:
 
 To build NeoForge only locally, run `./gradlew neoforgeIncludeJar` (Windows: `.\gradlew.bat neoforgeIncludeJar`).
 
-The distributable NeoForge JAR is `build/libs/Ad-Astra-Beyond-The-Horizons-neoforge-1.21.1-0.1.0.jar`. The mod display name is `Ad Astra: Beyond The Horizons`, but a colon cannot be used in a Windows-compatible filename.
+The distributable NeoForge JAR is `build/libs/BeyondTheHorizons-neoforge-1.21.1-0.1.0.jar`. The mod display name is `Ad Astra: Beyond The Horizons`, while the JAR filename uses only `BeyondTheHorizons`.
 
 ## GitHub Actions
 

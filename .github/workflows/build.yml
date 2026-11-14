@@ -32,7 +32,7 @@ jobs:
       - name: Upload NeoForge JAR
         uses: actions/upload-artifact@v4
         with:
-          name: Ad-Astra-Beyond-The-Horizons-neoforge-1.21.1
-          path: build/libs/Ad-Astra-Beyond-The-Horizons-neoforge-*.jar
+          name: BeyondTheHorizons-neoforge-1.21.1
+          path: build/libs/BeyondTheHorizons-neoforge-*.jar
           if-no-files-found: error
           retention-days: 1
