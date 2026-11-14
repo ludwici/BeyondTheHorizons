@@ -17,6 +17,8 @@ base {
 }
 
 repositories {
+    cloche.librariesMinecraft()
+
     mavenCentral()
 
     cloche {
