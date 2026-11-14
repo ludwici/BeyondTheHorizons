@@ -29,6 +29,18 @@ repositories {
     }
 
     maven(url = "https://maven.teamresourceful.com/repository/maven-public/")
+
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        filter {
+            includeGroup("maven.modrinth")
+        }
+    }
 }
 
 cloche {
@@ -52,6 +64,10 @@ cloche {
 
     neoforge {
         loaderVersion = neoforgeVersion
+
+        dependencies {
+            modImplementation("maven.modrinth:3ufwT9JF:9pnKHdCG")
+        }
     }
 
     fabric {
@@ -68,18 +84,7 @@ cloche {
 
         dependencies {
             fabricApi(fabricApiVersion)
-        }
-    }
-
-    targets.all {
-        dependencies {
-            modImplementation(
-                module(
-                    group = "earth.terrarium.adastra",
-                    name = "adastra-$loaderName-${minecraftVersion.get()}",
-                    version = adAstraVersion
-                )
-            )
+            modImplementation("maven.modrinth:3ufwT9JF:R1Zh2VaO")
         }
     }
 
