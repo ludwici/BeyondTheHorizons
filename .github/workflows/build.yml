@@ -1,4 +1,4 @@
-name: Build JARs
+name: Build NeoForge JAR
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    name: Fabric & NeoForge (Minecraft 1.21.1)
+    name: NeoForge (Minecraft 1.21.1)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,21 +26,13 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build both mod loaders
-        run: ./gradlew build --stacktrace --no-daemon
-
-      - name: Upload Fabric JAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: BeyondTheHorizons-1.21.1-Fabric
-          path: build/libs/*-fabric.jar
-          if-no-files-found: error
-          retention-days: 14
+      - name: Build NeoForge JAR only
+        run: ./gradlew neoforgeIncludeJar --stacktrace --no-daemon
 
       - name: Upload NeoForge JAR
         uses: actions/upload-artifact@v4
         with:
-          name: BeyondTheHorizons-1.21.1-NeoForge
-          path: build/libs/*-neoforge.jar
+          name: Ad-Astra-Beyond-The-Horizons-neoforge-1.21.1
+          path: build/libs/Ad-Astra-Beyond-The-Horizons-neoforge-*.jar
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 1

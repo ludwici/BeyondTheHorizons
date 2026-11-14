@@ -1,6 +1,6 @@
-# Beyond The Horizons
+# Ad Astra: Beyond The Horizons
 
-A work-in-progress add-on for [Ad Astra](https://github.com/terrarium-earth/Ad-Astra). This repository currently contains a minimal multi-loader project scaffold; no gameplay features have been implemented yet.
+Ad Astra: Beyond The Horizons is a work-in-progress add-on for [Ad Astra](https://github.com/terrarium-earth/Ad-Astra). This repository currently contains a minimal multi-loader project scaffold; no gameplay features have been implemented yet.
 
 ## Supported versions
 
@@ -23,11 +23,11 @@ The loader and tooling versions follow the Ad Astra 1.21.1 branch.
 - `src/fabric/java` — Fabric-specific entrypoint and future integrations.
 - `src/neoforge/java` — NeoForge-specific entrypoint and future integrations.
 - `build.gradle.kts` — multi-loader build using Cloche.
-- `.github/workflows/build.yml` — CI builds and downloadable JAR artifacts.
+- `.github/workflows/build.yml` — NeoForge-only CI and downloadable JAR artifact.
 
 ## Build locally
 
-Install Java 21. The project provides Gradle wrapper scripts; the first CI run will generate and commit the wrapper binary to the repository.
+Install Java 21. The project provides Gradle wrapper scripts; the wrapper binary is included in the repository.
 
 On Windows:
 
@@ -41,13 +41,13 @@ On Linux/macOS:
 ./gradlew build
 ```
 
-Before the wrapper binary has been generated, use an installed Gradle 9.4.0 with `gradle build`.
+To build NeoForge only locally, run `./gradlew neoforgeIncludeJar` (Windows: `.\gradlew.bat neoforgeIncludeJar`).
 
-Output files appear in `build/libs/`, with `-fabric.jar` and `-neoforge.jar` suffixes.
+The distributable NeoForge JAR is `build/libs/Ad-Astra-Beyond-The-Horizons-neoforge-1.21.1-0.1.0.jar`. The mod display name is `Ad Astra: Beyond The Horizons`, but a colon cannot be used in a Windows-compatible filename.
 
 ## GitHub Actions
 
-Open **Actions → Build JARs → Run workflow** to build on demand. Builds also run on pushes to `main` and pull requests. Download the Fabric and NeoForge JARs from the run's **Artifacts** section. Nothing is automatically published to CurseForge or Modrinth.
+Open **Actions → Build NeoForge JAR → Run workflow** to build on demand. Builds run on pushes to `main` and pull requests. GitHub Actions builds **NeoForge only**; Fabric sources are kept for future work. Download the NeoForge JAR from **Artifacts** (retention **1 day**). Nothing is automatically published to CurseForge or Modrinth.
 
 ## Dependencies
 

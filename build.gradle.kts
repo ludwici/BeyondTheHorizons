@@ -1,4 +1,5 @@
 import earth.terrarium.cloche.api.metadata.CommonMetadata
+import org.gradle.api.tasks.bundling.AbstractArchiveTask
 
 plugins {
     java
@@ -13,7 +14,7 @@ val fabricLoaderVersion: String by project
 val fabricApiVersion: String by project
 
 base {
-    archivesName.set("beyondthehorizons-$minecraftVersion")
+    archivesName.set("Ad-Astra-Beyond-The-Horizons")
 }
 
 repositories {
@@ -48,7 +49,7 @@ cloche {
 
     metadata {
         modId = "beyond_the_horizons"
-        name = "Beyond The Horizons"
+        name = "Ad Astra: Beyond The Horizons"
         description = "An exploration expansion for Ad Astra."
         url = "https://github.com/ludwici/BeyondTheHorizons"
         issues = "https://github.com/ludwici/BeyondTheHorizons/issues"
@@ -98,4 +99,8 @@ java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(21))
     }
+}
+
+tasks.named<AbstractArchiveTask>("neoforgeIncludeJar") {
+    archiveFileName.set("Ad-Astra-Beyond-The-Horizons-neoforge-$minecraftVersion-${project.version}.jar")
 }
