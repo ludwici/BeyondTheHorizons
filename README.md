@@ -69,5 +69,6 @@ Neptune is a Tier 4 Ad Astra destination at `beyond_the_horizons:neptune` with a
 - World generation keeps Minecraft's built-in **flat layer generator** for a reliable full source-water ocean. A single feature runs **only when a chunk generates**, adjusting the water/blue-ice and blue-ice/packed-ice boundaries with deterministic world-coordinate noise. The resulting ice shell is solid, has no isolated blocks, and joins seamlessly across chunks. The landing surface is kept flat at Y 184.
 - Thick distance fog is disabled so players can see the surrounding landscape while landing.
 - Ice-boundary shaping happens only at chunk generation; **already-generated chunks will not be reconstructed**. Test in a fresh world or new unvisited region.
+- **Ad Astra's random environmental freezing of water is disabled only for Neptune's water.** Ad Astra normally freezes water source blocks throughout a cold planet at random positions regardless of depth, so an enclosed deep ocean would otherwise fill with isolated frozen blocks in loaded chunks. Neptune's temperature remains −210 °C, and other Ad Astra environmental reactions still run. Already frozen blocks are not removed automatically.
 
 Neptune is interpreted as a fictional walkable ice-shell world; real Neptune has no known solid surface.
