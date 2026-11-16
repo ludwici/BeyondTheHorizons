@@ -1,6 +1,6 @@
 # Ad Astra: Beyond The Horizons
 
-Ad Astra: Beyond The Horizons is a work-in-progress add-on for [Ad Astra](https://github.com/terrarium-earth/Ad-Astra). This repository currently contains a minimal multi-loader project scaffold; no gameplay features have been implemented yet.
+Ad Astra: Beyond The Horizons is a work-in-progress add-on for [Ad Astra](https://github.com/terrarium-earth/Ad-Astra). The first explorable planet is Neptune, with a floating ice shell and a deep subsurface ocean.
 
 ## Supported versions
 
@@ -56,3 +56,16 @@ Ad Astra is a required runtime dependency on both platforms. Fabric also require
 ## License
 
 No open-source license has been granted for this add-on. Ad Astra is a separate mod owned by its respective authors.
+
+## Neptune (Solar System)
+
+Neptune is registered with Ad Astra as a Tier 4 destination at `beyond_the_horizons:neptune`, with the accompanying `beyond_the_horizons:neptune_orbit` dimension.
+
+- Gravity: **11.15 m/s²**; temperature: **−210 °C**; oxygen: **none**; solar power: **1**.
+- Landing ice cap: around **Y 197**, mostly **packed ice**, with gentle surface variation.
+- Transition: mixed packed ice and blue ice from **Y 174 down to Y 152**.
+- Lower ice cap: mostly **blue ice**, descending to around **Y 112**.
+- Ocean: **water** between the ice cap and the **bedrock floor at Y −64 to −61**.
+- The worldgen uses Minecraft's noise-based chunk generator, not chunk tick updates or placed-block replacements. Terrain will only appear in **newly generated** chunks.
+
+This is a fictional, walkable icy interpretation of Neptune, which does not have a real solid surface. No diamond-rain gameplay has been added.

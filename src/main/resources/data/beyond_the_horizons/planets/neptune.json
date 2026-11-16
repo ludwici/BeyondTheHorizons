@@ -1,0 +1,10 @@
+{
+  "dimension": "beyond_the_horizons:neptune",
+  "gravity": 11.15,
+  "orbit": "beyond_the_horizons:neptune_orbit",
+  "oxygen": false,
+  "solar_power": 1,
+  "solar_system": "ad_astra:solar_system",
+  "temperature": -210,
+  "tier": 4
+}
