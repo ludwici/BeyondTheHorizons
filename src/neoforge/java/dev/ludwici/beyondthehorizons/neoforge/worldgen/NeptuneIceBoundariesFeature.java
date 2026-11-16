@@ -12,12 +12,21 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
 
     private static final int WATER_ICE_BASE_Y = 85;
     private static final int BLUE_PACKED_BASE_Y = 155;
+    private static final int SURFACE_BASE_Y = 184;
+
     private static final int WATER_ICE_VARIATION = 16;
-    private static final int BLUE_PACKED_VARIATION = 9;
+    private static final int BLUE_PACKED_VARIATION = 13;
+    private static final int SURFACE_VARIATION = 13;
+    private static final int MIN_SURFACE_PACKED_ICE = 12;
+
+    private static final long LOWER_BOUNDARY_SALT = 0x4e455054554e45L;
+    private static final long UPPER_BOUNDARY_SALT = 0x4943455348454c4cL;
+    private static final long SURFACE_SALT = 0x53555246414345L;
 
     private static final BlockState WATER = Blocks.WATER.defaultBlockState();
     private static final BlockState BLUE_ICE = Blocks.BLUE_ICE.defaultBlockState();
     private static final BlockState PACKED_ICE = Blocks.PACKED_ICE.defaultBlockState();
+    private static final BlockState AIR = Blocks.AIR.defaultBlockState();
 
     public NeptuneIceBoundariesFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -35,11 +44,22 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
 
             for (int dz = 0; dz < 16; dz++) {
                 int z = origin.getZ() + dz;
-                double lowerNoise = terrainNoise(seed, x, z, 0x4e455054554e45L);
-                double upperNoise = terrainNoise(seed, x, z, 0x4943455348454c4cL);
 
+                double lowerNoise = terrainNoise(seed, x, z, LOWER_BOUNDARY_SALT);
                 int waterIceBoundary = WATER_ICE_BASE_Y + (int) Math.round(lowerNoise * WATER_ICE_VARIATION);
-                int bluePackedBoundary = BLUE_PACKED_BASE_Y + (int) Math.round(upperNoise * BLUE_PACKED_VARIATION);
+
+                double surfaceMacro = sample(seed ^ SURFACE_SALT, x / 120.0, z / 120.0);
+                double surfaceMedium = sample(seed ^ (SURFACE_SALT * 31), x / 52.0, z / 52.0);
+                double surfaceFine = sample(seed ^ (SURFACE_SALT * 131), x / 19.0, z / 19.0);
+                int surfaceOffset = (int) Math.round(surfaceMacro * 14 + surfaceMedium * 6 + surfaceFine * 2);
+                int surfaceY = SURFACE_BASE_Y + Math.clamp(surfaceOffset, -SURFACE_VARIATION, SURFACE_VARIATION);
+
+                double upperMacro = sample(seed ^ UPPER_BOUNDARY_SALT, x / 76.0, z / 76.0);
+                double upperMedium = sample(seed ^ (UPPER_BOUNDARY_SALT * 31), x / 29.0, z / 29.0);
+                double upperFine = sample(seed ^ (UPPER_BOUNDARY_SALT * 131), x / 12.0, z / 12.0);
+                int upperOffset = (int) Math.round(upperMacro * 10 + upperMedium * 5 + upperFine * 2);
+                int bluePackedBoundary = BLUE_PACKED_BASE_Y + Math.clamp(upperOffset, -BLUE_PACKED_VARIATION, BLUE_PACKED_VARIATION);
+                bluePackedBoundary = Math.min(bluePackedBoundary, surfaceY - MIN_SURFACE_PACKED_ICE);
 
                 for (int y = WATER_ICE_BASE_Y - WATER_ICE_VARIATION; y <= WATER_ICE_BASE_Y + WATER_ICE_VARIATION; y++) {
                     pos.set(x, y, z);
@@ -62,6 +82,19 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
                     }
 
                     BlockState target = y < bluePackedBoundary ? BLUE_ICE : PACKED_ICE;
+                    if (current != target) {
+                        level.setBlock(pos, target, 2);
+                    }
+                }
+
+                for (int y = SURFACE_BASE_Y - SURFACE_VARIATION + 1; y <= SURFACE_BASE_Y + SURFACE_VARIATION; y++) {
+                    pos.set(x, y, z);
+                    BlockState current = level.getBlockState(pos);
+                    if (!current.isAir() && !current.is(Blocks.PACKED_ICE)) {
+                        continue;
+                    }
+
+                    BlockState target = y <= surfaceY ? PACKED_ICE : AIR;
                     if (current != target) {
                         level.setBlock(pos, target, 2);
                     }

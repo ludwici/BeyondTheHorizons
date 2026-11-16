@@ -62,11 +62,11 @@ No open-source license has been granted for this add-on. Ad Astra is a separate 
 Neptune is a Tier 4 Ad Astra destination at `beyond_the_horizons:neptune` with an orbit at `beyond_the_horizons:neptune_orbit`.
 
 - Gravity: **11.15 m/s²**; temperature: **−210 °C**; oxygen: **none**; solar power: **1**.
-- Surface: **packed ice**, stable landing height around **Y 184**.
-- Transition: **packed and blue ice** follows a continuous noise-driven boundary, with a maximum deviation of **9 blocks**.
+- Surface: **packed ice**, with rolling, noise-shaped hills and shallow troughs from **Y 171 to Y 197** (nominal Y 184), generated in broad connected shapes.
+- Transition: **packed and blue ice** follows an independent, three-scale coherent noise boundary, with a maximum deviation of **13 blocks**. At least 12 packed-ice blocks remain under the surface.
 - Lower ice cap: thick **blue ice** above the deep ocean; its underside gently varies by up to **16 blocks** in broad, continuous shapes, without disconnected ice blobs.
 - Ocean: **source water** from the ice boundary (normally Y 85, varying between Y 69 and 101) to the **5-block bedrock floor** at Y −64 to −60.
-- World generation keeps Minecraft's built-in **flat layer generator** for a reliable full source-water ocean. A single feature runs **only when a chunk generates**, adjusting the water/blue-ice and blue-ice/packed-ice boundaries with deterministic world-coordinate noise. The resulting ice shell is solid, has no isolated blocks, and joins seamlessly across chunks. The landing surface is kept flat at Y 184.
+- World generation keeps Minecraft's built-in **flat layer generator** for a reliable full source-water ocean. A single feature runs **only when a chunk generates**, adjusting the water/blue-ice and blue-ice/packed-ice boundaries with deterministic world-coordinate noise. The resulting ice shell is solid, has no isolated blocks, and joins seamlessly across chunks. The packed-ice surface also receives three-scale world-coordinate noise for seamless low rolling ridges and valleys.
 - Thick distance fog is disabled so players can see the surrounding landscape while landing.
 - Ice-boundary shaping happens only at chunk generation; **already-generated chunks will not be reconstructed**. Test in a fresh world or new unvisited region.
 - **Ad Astra's random environmental freezing of water is disabled only for Neptune's water.** Ad Astra normally freezes water source blocks throughout a cold planet at random positions regardless of depth, so an enclosed deep ocean would otherwise fill with isolated frozen blocks in loaded chunks. Neptune's temperature remains −210 °C, and other Ad Astra environmental reactions still run. Already frozen blocks are not removed automatically.
