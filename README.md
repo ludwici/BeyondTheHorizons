@@ -62,10 +62,10 @@ No open-source license has been granted for this add-on. Ad Astra is a separate 
 Neptune is registered with Ad Astra as a Tier 4 destination at `beyond_the_horizons:neptune`, with the accompanying `beyond_the_horizons:neptune_orbit` dimension.
 
 - Gravity: **11.15 m/s²**; temperature: **−210 °C**; oxygen: **none**; solar power: **1**.
-- Landing ice cap: around **Y 197**, mostly **packed ice**, with gentle surface variation.
+- Landing ice cap: around **Y 198**, mostly **packed ice**, with gentle surface variation.
 - Transition: mixed packed ice and blue ice from **Y 174 down to Y 152**.
-- Lower ice cap: mostly **blue ice**, descending to around **Y 112**.
-- Ocean: **water** between the ice cap and the **bedrock floor at Y −64 to −61**.
-- The worldgen uses Minecraft's noise-based chunk generator, not chunk tick updates or placed-block replacements. Terrain will only appear in **newly generated** chunks.
+- Lower ice cap: mostly **blue ice**, descending to around **Y 125**.
+- Deep ocean: still **source water** under the ice cap, from roughly **Y 124 to Y −59**, resting on the **bedrock floor at Y −64 to −60**. The generator's global sea level (**Y 184**) is deliberately buried inside an uninterrupted ice shell, so generated water never borders a horizontal air gap and does not cascade into neighboring chunks.
+- The dimension remains a Minecraft noise-based deep ocean with an intact ice roof. The lower roof boundary is deliberately level to avoid exposed flowing-water seams; only the top of the ice varies. The generator does not place flowing water through tick-based replacement. Worldgen changes apply only to **newly generated** chunks; test in a fresh world or restore a backed-up copy before deleting the old Neptune dimension's region data.
 
 This is a fictional, walkable icy interpretation of Neptune, which does not have a real solid surface. No diamond-rain gameplay has been added.
