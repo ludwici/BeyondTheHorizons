@@ -1,11 +1,62 @@
 {
   "type": "beyond_the_horizons:neptune",
   "generator": {
-    "type": "minecraft:noise",
-    "settings": "beyond_the_horizons:neptune",
-    "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "beyond_the_horizons:neptune_ice_sheet"
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "beyond_the_horizons:neptune_ice_sheet",
+      "features": false,
+      "lakes": false,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 5
+        },
+        {
+          "block": "minecraft:water",
+          "height": 144
+        },
+        {
+          "block": "minecraft:blue_ice",
+          "height": 50
+        },
+        {
+          "block": "minecraft:blue_ice",
+          "height": 4
+        },
+        {
+          "block": "minecraft:packed_ice",
+          "height": 1
+        },
+        {
+          "block": "minecraft:blue_ice",
+          "height": 4
+        },
+        {
+          "block": "minecraft:packed_ice",
+          "height": 2
+        },
+        {
+          "block": "minecraft:blue_ice",
+          "height": 3
+        },
+        {
+          "block": "minecraft:packed_ice",
+          "height": 3
+        },
+        {
+          "block": "minecraft:blue_ice",
+          "height": 1
+        },
+        {
+          "block": "minecraft:packed_ice",
+          "height": 2
+        },
+        {
+          "block": "minecraft:packed_ice",
+          "height": 30
+        }
+      ],
+      "structure_overrides": []
     }
   }
 }

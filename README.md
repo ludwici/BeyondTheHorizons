@@ -59,13 +59,15 @@ No open-source license has been granted for this add-on. Ad Astra is a separate 
 
 ## Neptune (Solar System)
 
-Neptune is registered with Ad Astra as a Tier 4 destination at `beyond_the_horizons:neptune`, with the accompanying `beyond_the_horizons:neptune_orbit` dimension.
+Neptune is a Tier 4 Ad Astra destination at `beyond_the_horizons:neptune` with an orbit at `beyond_the_horizons:neptune_orbit`.
 
 - Gravity: **11.15 m/s²**; temperature: **−210 °C**; oxygen: **none**; solar power: **1**.
-- Landing ice cap: around **Y 198**, mostly **packed ice**, with gentle surface variation.
-- Transition: mixed packed ice and blue ice from **Y 174 down to Y 152**.
-- Lower ice cap: mostly **blue ice**, descending to around **Y 125**.
-- Deep ocean: still **source water** under the ice cap, from roughly **Y 124 to Y −59**, resting on the **bedrock floor at Y −64 to −60**. The generator's global sea level (**Y 184**) is deliberately buried inside an uninterrupted ice shell, so generated water never borders a horizontal air gap and does not cascade into neighboring chunks.
-- The dimension remains a Minecraft noise-based deep ocean with an intact ice roof. The lower roof boundary is deliberately level to avoid exposed flowing-water seams; only the top of the ice varies. The generator does not place flowing water through tick-based replacement. Worldgen changes apply only to **newly generated** chunks; test in a fresh world or restore a backed-up copy before deleting the old Neptune dimension's region data.
+- Surface: **packed ice**, stable landing height around **Y 184**.
+- Transition: **packed and blue ice** in a fixed vertical sequence.
+- Lower ice cap: thick **blue ice** between the transition and the deep water.
+- Ocean: **144 solid source-water layers**, down to a **5-block bedrock floor** at Y −64 to −60.
+- World generation uses Minecraft's built-in **flat layer generator**, like its Water World preset, instead of the earlier custom density-based generator. The ice shell completely encloses the sea. This is a stability-first version, so terrain is flat until a more performant terrain-variation technique is added.
+- Thick distance fog is disabled so players can see the surrounding landscape while landing.
+- The layers are written at chunk generation; **already-generated chunks will not be reconstructed**. Test in a new world.
 
-This is a fictional, walkable icy interpretation of Neptune, which does not have a real solid surface. No diamond-rain gameplay has been added.
+Neptune is interpreted as a fictional walkable ice-shell world; real Neptune has no known solid surface.
