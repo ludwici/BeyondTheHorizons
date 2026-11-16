@@ -4,7 +4,7 @@
     "type": "minecraft:flat",
     "settings": {
       "biome": "beyond_the_horizons:neptune_ice_sheet",
-      "features": false,
+      "features": true,
       "lakes": false,
       "layers": [
         {
@@ -17,39 +17,7 @@
         },
         {
           "block": "minecraft:blue_ice",
-          "height": 50
-        },
-        {
-          "block": "minecraft:blue_ice",
-          "height": 4
-        },
-        {
-          "block": "minecraft:packed_ice",
-          "height": 1
-        },
-        {
-          "block": "minecraft:blue_ice",
-          "height": 4
-        },
-        {
-          "block": "minecraft:packed_ice",
-          "height": 2
-        },
-        {
-          "block": "minecraft:blue_ice",
-          "height": 3
-        },
-        {
-          "block": "minecraft:packed_ice",
-          "height": 3
-        },
-        {
-          "block": "minecraft:blue_ice",
-          "height": 1
-        },
-        {
-          "block": "minecraft:packed_ice",
-          "height": 2
+          "height": 70
         },
         {
           "block": "minecraft:packed_ice",

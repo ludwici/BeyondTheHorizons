@@ -15,7 +15,13 @@
       "tick_delay": 6000
     }
   },
-  "features": [],
+  "features": [
+    [],
+    [],
+    [
+      "beyond_the_horizons:neptune_ice_boundaries"
+    ]
+  ],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {

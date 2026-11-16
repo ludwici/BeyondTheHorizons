@@ -63,11 +63,11 @@ Neptune is a Tier 4 Ad Astra destination at `beyond_the_horizons:neptune` with a
 
 - Gravity: **11.15 m/s²**; temperature: **−210 °C**; oxygen: **none**; solar power: **1**.
 - Surface: **packed ice**, stable landing height around **Y 184**.
-- Transition: **packed and blue ice** in a fixed vertical sequence.
-- Lower ice cap: thick **blue ice** between the transition and the deep water.
-- Ocean: **144 solid source-water layers**, down to a **5-block bedrock floor** at Y −64 to −60.
-- World generation uses Minecraft's built-in **flat layer generator**, like its Water World preset, instead of the earlier custom density-based generator. The ice shell completely encloses the sea. This is a stability-first version, so terrain is flat until a more performant terrain-variation technique is added.
+- Transition: **packed and blue ice** follows a continuous noise-driven boundary, with a maximum deviation of **9 blocks**.
+- Lower ice cap: thick **blue ice** above the deep ocean; its underside gently varies by up to **16 blocks** in broad, continuous shapes, without disconnected ice blobs.
+- Ocean: **source water** from the ice boundary (normally Y 85, varying between Y 69 and 101) to the **5-block bedrock floor** at Y −64 to −60.
+- World generation keeps Minecraft's built-in **flat layer generator** for a reliable full source-water ocean. A single feature runs **only when a chunk generates**, adjusting the water/blue-ice and blue-ice/packed-ice boundaries with deterministic world-coordinate noise. The resulting ice shell is solid, has no isolated blocks, and joins seamlessly across chunks. The landing surface is kept flat at Y 184.
 - Thick distance fog is disabled so players can see the surrounding landscape while landing.
-- The layers are written at chunk generation; **already-generated chunks will not be reconstructed**. Test in a new world.
+- Ice-boundary shaping happens only at chunk generation; **already-generated chunks will not be reconstructed**. Test in a fresh world or new unvisited region.
 
 Neptune is interpreted as a fictional walkable ice-shell world; real Neptune has no known solid surface.
