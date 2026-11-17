@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "ad_astra:martian_wastelands",
+    "ad_astra:martian_canyon_creek"
+  ],
+  "features": "beyond_the_horizons:martian_hematite_strata",
+  "step": "underground_decoration"
+}

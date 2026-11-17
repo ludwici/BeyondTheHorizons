@@ -1,5 +1,6 @@
 package dev.ludwici.beyondthehorizons.neoforge.lunar;
 
+import dev.ludwici.beyondthehorizons.neoforge.mars.MartianHematiteRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -83,7 +84,7 @@ public final class LaserDrillItem extends Item {
         }
 
         BlockPos pos = blockHit.getBlockPos();
-        if (!isLunarCrystal(level.getBlockState(pos))) {
+        if (!isLaserMineable(level.getBlockState(pos))) {
             resetProgress(player);
             return;
         }
@@ -115,7 +116,7 @@ public final class LaserDrillItem extends Item {
 
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miner) {
-        if (!level.isClientSide && isLunarCrystal(state) && canMine(stack) && !miner.isSpectator()) {
+        if (!level.isClientSide && isLaserMineable(state) && canMine(stack) && !miner.isSpectator()) {
             stack.set(LunarCrystalRegistry.LASER_DRILL_ENERGY.get(), storedEnergy(stack) - ENERGY_PER_CRYSTAL);
         }
 
@@ -133,9 +134,10 @@ public final class LaserDrillItem extends Item {
         return -player.getId();
     }
 
-    private static boolean isLunarCrystal(BlockState state) {
+    private static boolean isLaserMineable(BlockState state) {
         return state.is(LunarCrystalRegistry.LUNAR_CRYSTAL_BLOCK.get())
-                || state.is(LunarCrystalRegistry.LUNAR_CRYSTAL_CLUSTER.get());
+                || state.is(LunarCrystalRegistry.LUNAR_CRYSTAL_CLUSTER.get())
+                || state.is(MartianHematiteRegistry.HEMATITE_STRATUM.get());
     }
 
     @Override

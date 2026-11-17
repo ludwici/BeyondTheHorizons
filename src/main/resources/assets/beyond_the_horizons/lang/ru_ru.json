@@ -49,7 +49,9 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Скопление лунных кристаллов",
   "item.beyond_the_horizons.laser_drill": "Лазерный бур",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Энергия: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Удерживайте ПКМ для лазерного луча. Лунные кристаллы разрушаются при длительном наведении.",
+  "tooltip.beyond_the_horizons.laser_drill_function": "Удерживайте ПКМ для добычи лунных кристаллов и марсианского гематита лазерным буром.",
   "item.beyond_the_horizons.polished_lunar_crystal": "Обработанный лунный кристалл",
-  "item.beyond_the_horizons.precision_optical_lens": "Прецизионная оптическая линза"
+  "item.beyond_the_horizons.precision_optical_lens": "Прецизионная оптическая линза",
+  "block.beyond_the_horizons.hematite_stratum": "Гематитовый пласт",
+  "item.beyond_the_horizons.raw_hematite": "Сырой гематит"
 }

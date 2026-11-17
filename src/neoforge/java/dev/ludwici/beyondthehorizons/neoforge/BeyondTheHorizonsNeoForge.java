@@ -8,6 +8,8 @@ import dev.ludwici.beyondthehorizons.neoforge.environment.NeptuneEnvironment;
 import dev.ludwici.beyondthehorizons.neoforge.items.BeyondTheHorizonsCreativeTabs;
 import dev.ludwici.beyondthehorizons.neoforge.items.DivingSuitItems;
 import dev.ludwici.beyondthehorizons.neoforge.lunar.LunarCrystalRegistry;
+import dev.ludwici.beyondthehorizons.neoforge.mars.MartianHematiteRegistry;
+import dev.ludwici.beyondthehorizons.neoforge.worldgen.MartianWorldgen;
 import dev.ludwici.beyondthehorizons.neoforge.probe.SpaceYRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.NeptuneWorldgen;
 import earth.terrarium.adastra.api.events.AdAstraEvents;
@@ -21,9 +23,11 @@ public final class BeyondTheHorizonsNeoForge {
 
     public BeyondTheHorizonsNeoForge(IEventBus modBus) {
         NeptuneWorldgen.register(modBus);
+        MartianWorldgen.register(modBus);
         EnvironmentAttributes.register(modBus);
         DivingSuitItems.register(modBus);
         LunarCrystalRegistry.register(modBus);
+        MartianHematiteRegistry.register(modBus);
         SpaceYRegistry.register(modBus);
         BeyondTheHorizonsCreativeTabs.register(modBus);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerTick);
