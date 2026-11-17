@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "ad_astra:venus_wastelands",
+    "ad_astra:infernal_venus_barrens"
+  ],
+  "features": "beyond_the_horizons:venus_anhydrite_crust",
+  "step": "vegetal_decoration"
+}

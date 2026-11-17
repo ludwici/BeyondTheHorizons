@@ -49,7 +49,7 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Lunar Crystal Cluster",
   "item.beyond_the_horizons.laser_drill": "Laser Drill",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Energy: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Hold RMB to use the laser drill on lunar crystals or Martian hematite.",
+  "tooltip.beyond_the_horizons.laser_drill_function": "Hold RMB to mine lunar crystals, Martian hematite, and Venusian anhydrite.",
   "item.beyond_the_horizons.polished_lunar_crystal": "Polished Lunar Crystal",
   "item.beyond_the_horizons.precision_optical_lens": "Precision Optical Lens",
   "block.beyond_the_horizons.hematite_stratum": "Hematite Stratum",
@@ -57,5 +57,7 @@
   "item.beyond_the_horizons.ferrite_core": "Ferrite Core",
   "item.beyond_the_horizons.electromagnetic_core": "Electromagnetic Core",
   "item.beyond_the_horizons.precision_servo": "Precision Servo",
-  "item.beyond_the_horizons.stabilization_module": "Stabilization Module"
+  "item.beyond_the_horizons.stabilization_module": "Stabilization Module",
+  "block.beyond_the_horizons.anhydrite_crust": "Anhydrite Crust",
+  "item.beyond_the_horizons.raw_anhydrite": "Raw Anhydrite"
 }

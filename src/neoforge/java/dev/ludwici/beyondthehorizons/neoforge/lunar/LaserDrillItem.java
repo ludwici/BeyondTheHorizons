@@ -1,6 +1,7 @@
 package dev.ludwici.beyondthehorizons.neoforge.lunar;
 
 import dev.ludwici.beyondthehorizons.neoforge.mars.MartianHematiteRegistry;
+import dev.ludwici.beyondthehorizons.neoforge.venus.VenusAnhydriteRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -137,7 +138,8 @@ public final class LaserDrillItem extends Item {
     private static boolean isLaserMineable(BlockState state) {
         return state.is(LunarCrystalRegistry.LUNAR_CRYSTAL_BLOCK.get())
                 || state.is(LunarCrystalRegistry.LUNAR_CRYSTAL_CLUSTER.get())
-                || state.is(MartianHematiteRegistry.HEMATITE_STRATUM.get());
+                || state.is(MartianHematiteRegistry.HEMATITE_STRATUM.get())
+                || state.is(VenusAnhydriteRegistry.ANHYDRITE_CRUST.get());
     }
 
     @Override

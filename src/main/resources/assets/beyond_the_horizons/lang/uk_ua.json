@@ -49,7 +49,7 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Скупчення місячних кристалів",
   "item.beyond_the_horizons.laser_drill": "Лазерний бур",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Енергія: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Утримуйте ПКМ для видобутку місячних кристалів і марсіанського гематиту лазерним буром.",
+  "tooltip.beyond_the_horizons.laser_drill_function": "Утримуйте ПКМ для видобутку місячних кристалів, марсіанського гематиту та венеріанського ангідриту.",
   "item.beyond_the_horizons.polished_lunar_crystal": "Оброблений місячний кристал",
   "item.beyond_the_horizons.precision_optical_lens": "Прецизійна оптична лінза",
   "block.beyond_the_horizons.hematite_stratum": "Гематитовий пласт",
@@ -57,5 +57,7 @@
   "item.beyond_the_horizons.ferrite_core": "Феритовий сердечник",
   "item.beyond_the_horizons.electromagnetic_core": "Електромагнітний сердечник",
   "item.beyond_the_horizons.precision_servo": "Прецизійний сервопривід",
-  "item.beyond_the_horizons.stabilization_module": "Стабілізувальний модуль"
+  "item.beyond_the_horizons.stabilization_module": "Стабілізувальний модуль",
+  "block.beyond_the_horizons.anhydrite_crust": "Ангідритова кірка",
+  "item.beyond_the_horizons.raw_anhydrite": "Сирий ангідрит"
 }

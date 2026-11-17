@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "beyond_the_horizons:block/anhydrite_crust"
+    },
+    "facing=down": {
+      "model": "beyond_the_horizons:block/anhydrite_crust",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "beyond_the_horizons:block/anhydrite_crust",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "beyond_the_horizons:block/anhydrite_crust",
+      "x": 90,
+      "y": 180
+    },
+    "facing=east": {
+      "model": "beyond_the_horizons:block/anhydrite_crust",
+      "x": 90,
+      "y": 90
+    },
+    "facing=west": {
+      "model": "beyond_the_horizons:block/anhydrite_crust",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

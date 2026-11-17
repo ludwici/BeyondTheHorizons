@@ -1,0 +1,15 @@
+{
+  "feature": "beyond_the_horizons:venus_anhydrite_crust",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 9
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
