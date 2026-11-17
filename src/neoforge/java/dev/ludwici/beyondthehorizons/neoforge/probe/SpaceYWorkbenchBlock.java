@@ -1,5 +1,7 @@
 package dev.ludwici.beyondthehorizons.neoforge.probe;
 
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
@@ -16,8 +18,15 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public final class SpaceYWorkbenchBlock extends BaseEntityBlock {
 
+    public static final MapCodec<SpaceYWorkbenchBlock> CODEC = simpleCodec(SpaceYWorkbenchBlock::new);
+
     public SpaceYWorkbenchBlock(BlockBehaviour.Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -48,7 +57,7 @@ public final class SpaceYWorkbenchBlock extends BaseEntityBlock {
     @Override
     protected void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
         if (!oldState.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof SpaceYWorkbenchBlockEntity workbench) {
-            Containers.dropContents(level, pos, workbench.components());
+            Containers.dropContents(level, pos, workbench.inputInventory());
             level.updateNeighbourForOutputSignal(pos, this);
         }
 

@@ -33,7 +33,7 @@ public final class SpaceYWorkbenchMenu extends AbstractContainerMenu {
     }
 
     public SpaceYWorkbenchMenu(int containerId, Inventory inventory, SpaceYWorkbenchBlockEntity workbench) {
-        this(containerId, inventory, workbench.components(),
+        this(containerId, inventory, workbench.inputInventory(),
                 ContainerLevelAccess.create(inventory.player.level(), workbench.getBlockPos()));
     }
 

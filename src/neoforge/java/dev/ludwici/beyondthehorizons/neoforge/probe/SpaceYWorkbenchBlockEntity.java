@@ -29,7 +29,7 @@ public final class SpaceYWorkbenchBlockEntity extends BlockEntity implements Men
         super(SpaceYRegistry.WORKBENCH_BLOCK_ENTITY.get(), pos, state);
     }
 
-    public SimpleContainer components() {
+    public SimpleContainer inputInventory() {
         return components;
     }
 
