@@ -59,7 +59,7 @@ public final class TemperatureDisplayRenderer implements BlockEntityRenderer<Tem
 
         pose.scale(0.014f, -0.023f, 0.014f);
         Matrix4f transform = pose.last().pose();
-        font.drawInBatch(value, -font.width(value) / 2.0f, -font.lineHeight / 2.0f,
+        font.drawInBatch(value, -font.width(value) / 2.0f, -font.lineHeight / 2.0f + 1.0f,
                 0xA5F5F3, false, transform, buffers, Font.DisplayMode.NORMAL, 0, LightTexture.FULL_BRIGHT);
         pose.popPose();
     }

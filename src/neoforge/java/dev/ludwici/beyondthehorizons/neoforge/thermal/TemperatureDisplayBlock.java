@@ -36,8 +36,10 @@ public final class TemperatureDisplayBlock extends BaseEntityBlock {
     private static final VoxelShape WALL_SOUTH = box(2, 3, 0, 14, 13, 2);
     private static final VoxelShape WALL_EAST = box(0, 3, 2, 2, 13, 14);
     private static final VoxelShape WALL_WEST = box(14, 3, 2, 16, 13, 14);
-    private static final VoxelShape FLOOR_SHAPE = box(2, 0, 3, 14, 2, 13);
-    private static final VoxelShape CEILING_SHAPE = box(2, 14, 3, 14, 16, 13);
+    private static final VoxelShape FLOOR_NORTH_SOUTH = box(2, 0, 3, 14, 2, 13);
+    private static final VoxelShape FLOOR_EAST_WEST = box(3, 0, 2, 13, 2, 14);
+    private static final VoxelShape CEILING_NORTH_SOUTH = box(2, 14, 3, 14, 16, 13);
+    private static final VoxelShape CEILING_EAST_WEST = box(3, 14, 2, 13, 16, 14);
 
     public TemperatureDisplayBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -99,8 +101,10 @@ public final class TemperatureDisplayBlock extends BaseEntityBlock {
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACE)) {
-            case FLOOR -> FLOOR_SHAPE;
-            case CEILING -> CEILING_SHAPE;
+            case FLOOR -> state.getValue(FACING).getAxis() == Direction.Axis.Z
+                    ? FLOOR_NORTH_SOUTH : FLOOR_EAST_WEST;
+            case CEILING -> state.getValue(FACING).getAxis() == Direction.Axis.Z
+                    ? CEILING_NORTH_SOUTH : CEILING_EAST_WEST;
             case WALL -> switch (state.getValue(FACING)) {
                 case NORTH -> WALL_NORTH;
                 case SOUTH -> WALL_SOUTH;
