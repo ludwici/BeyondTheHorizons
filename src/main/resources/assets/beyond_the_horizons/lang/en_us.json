@@ -13,5 +13,10 @@
   "message.beyond_the_horizons.environment_debug": "Pressure: %s bar | Resist: %s bar | Temp: %s C | Wind: %s | Radiation: %s | %s",
   "message.beyond_the_horizons.debug_enabled": "Environment diagnostics enabled",
   "message.beyond_the_horizons.debug_disabled": "Environment diagnostics disabled",
-  "death.attack.beyond_the_horizons.pressure": "%1$s was crushed by the immense pressure"
+  "death.attack.beyond_the_horizons.pressure": "%1$s was crushed by the immense pressure",
+  "item.beyond_the_horizons.expedition_diving_helmet": "Expedition Diving Helmet",
+  "item.beyond_the_horizons.expedition_diving_chestplate": "Expedition Diving Suit",
+  "item.beyond_the_horizons.expedition_diving_leggings": "Expedition Diving Leggings",
+  "item.beyond_the_horizons.expedition_diving_boots": "Expedition Diving Boots",
+  "tooltip.beyond_the_horizons.expedition_diving_suit": "Full set: +3.0 bar pressure resistance"
 }

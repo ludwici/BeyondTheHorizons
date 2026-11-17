@@ -13,5 +13,10 @@
   "message.beyond_the_horizons.environment_debug": "Тиск: %s бар | Захист: %s бар | Темп.: %s °C | Вітер: %s | Радіація: %s | %s",
   "message.beyond_the_horizons.debug_enabled": "Діагностику середовища ввімкнено",
   "message.beyond_the_horizons.debug_disabled": "Діагностику середовища вимкнено",
-  "death.attack.beyond_the_horizons.pressure": "%1$s загинув від надзвичайного тиску"
+  "death.attack.beyond_the_horizons.pressure": "%1$s загинув від надзвичайного тиску",
+  "item.beyond_the_horizons.expedition_diving_helmet": "Експедиційний водолазний шолом",
+  "item.beyond_the_horizons.expedition_diving_chestplate": "Експедиційний підводний скафандр",
+  "item.beyond_the_horizons.expedition_diving_leggings": "Експедиційні водолазні поножі",
+  "item.beyond_the_horizons.expedition_diving_boots": "Експедиційні водолазні черевики",
+  "tooltip.beyond_the_horizons.expedition_diving_suit": "Повний комплект: +3,0 бар стійкості до тиску"
 }

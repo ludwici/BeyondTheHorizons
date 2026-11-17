@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "S S",
+    "D D"
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "D": {
+      "tag": "ad_astra:desh_ingots"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:expedition_diving_boots"
+  }
+}

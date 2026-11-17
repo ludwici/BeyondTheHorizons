@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SSS",
+    "SGS",
+    " D "
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "D": {
+      "tag": "ad_astra:desh_ingots"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:expedition_diving_helmet"
+  }
+}
