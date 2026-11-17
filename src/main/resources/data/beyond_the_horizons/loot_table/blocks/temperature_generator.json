@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "beyond_the_horizons:heat_generator"
+          "name": "beyond_the_horizons:temperature_generator"
         }
       ]
     }

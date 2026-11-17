@@ -3,7 +3,17 @@ name: Build NeoForge JAR
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.rst'
   pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.rst'
   workflow_dispatch:
 
 permissions:

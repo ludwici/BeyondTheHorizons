@@ -32,12 +32,12 @@ public final class ThermalGeneratorMenu extends AbstractContainerMenu {
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                addSlot(new Slot(inventory, column + row * 9 + 9, 8 + column * 18, 138 + row * 18));
+                addSlot(new Slot(inventory, column + row * 9 + 9, 12 + column * 18, 130 + row * 18));
             }
         }
 
         for (int column = 0; column < 9; column++) {
-            addSlot(new Slot(inventory, column, 8 + column * 18, 196));
+            addSlot(new Slot(inventory, column, 12 + column * 18, 188));
         }
     }
 
@@ -53,7 +53,7 @@ public final class ThermalGeneratorMenu extends AbstractContainerMenu {
                     case 4 -> generator.energyPerTick();
                     case 5 -> generator.volume();
                     case 6 -> generator.status();
-                    case 7 -> generator.mode() == ThermalGeneratorBlock.Mode.COOL ? 1 : 0;
+                    case 7 -> 1;
                     default -> 0;
                 };
             }
@@ -93,8 +93,8 @@ public final class ThermalGeneratorMenu extends AbstractContainerMenu {
         return data.get(6);
     }
 
-    public ThermalGeneratorBlock.Mode mode() {
-        return data.get(7) == 1 ? ThermalGeneratorBlock.Mode.COOL : ThermalGeneratorBlock.Mode.HEAT;
+    public boolean isSynchronized() {
+        return data.get(7) == 1;
     }
 
     @Override
@@ -104,7 +104,7 @@ public final class ThermalGeneratorMenu extends AbstractContainerMenu {
             return false;
         }
 
-        generator.setTargetTemperature(buttonId - 200);
+        generator.setTargetTemperature(buttonId + ThermalGeneratorBlockEntity.MIN_TEMPERATURE);
         broadcastChanges();
         return true;
     }

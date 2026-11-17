@@ -3,7 +3,7 @@
   "textures": {
     "top": "beyond_the_horizons:block/temperature_top",
     "side": "beyond_the_horizons:block/temperature_side",
-    "front": "beyond_the_horizons:block/temperature_heat",
+    "front": "beyond_the_horizons:block/temperature_top",
     "particle": "beyond_the_horizons:block/temperature_side"
   }
 }

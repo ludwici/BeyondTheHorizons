@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "beyond_the_horizons:spacey_workbench"
+    "beyond_the_horizons:spacey_workbench",
+    "beyond_the_horizons:temperature_generator"
   ]
 }

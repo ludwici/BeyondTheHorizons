@@ -23,20 +23,12 @@ import org.jetbrains.annotations.Nullable;
 
 public final class ThermalGeneratorBlock extends BaseEntityBlock {
 
-    public static final MapCodec<ThermalGeneratorBlock> CODEC = simpleCodec(
-            properties -> new ThermalGeneratorBlock(properties, Mode.COOL));
+    public static final MapCodec<ThermalGeneratorBlock> CODEC = simpleCodec(ThermalGeneratorBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-    private final Mode mode;
-
-    public ThermalGeneratorBlock(BlockBehaviour.Properties properties, Mode mode) {
+    public ThermalGeneratorBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.mode = mode;
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    public Mode mode() {
-        return mode;
     }
 
     @Override
@@ -83,32 +75,5 @@ public final class ThermalGeneratorBlock extends BaseEntityBlock {
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide());
-    }
-
-    public enum Mode {
-        HEAT(20, 600, 80),
-        COOL(-200, 70, 20);
-
-        private final int min;
-        private final int max;
-        private final int initial;
-
-        Mode(int min, int max, int initial) {
-            this.min = min;
-            this.max = max;
-            this.initial = initial;
-        }
-
-        public int min() {
-            return min;
-        }
-
-        public int max() {
-            return max;
-        }
-
-        public int initial() {
-            return initial;
-        }
     }
 }

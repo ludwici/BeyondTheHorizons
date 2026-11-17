@@ -25,26 +25,16 @@ public final class ThermalGeneratorRegistry {
     private static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(BuiltInRegistries.MENU, BeyondTheHorizons.MOD_ID);
 
-    public static final DeferredBlock<ThermalGeneratorBlock> HEAT_GENERATOR =
-            BLOCKS.register("heat_generator", () -> new ThermalGeneratorBlock(
-                    BlockBehaviour.Properties.of().strength(3.5f).sound(SoundType.METAL),
-                    ThermalGeneratorBlock.Mode.HEAT));
+    public static final DeferredBlock<ThermalGeneratorBlock> TEMPERATURE_GENERATOR =
+            BLOCKS.register("temperature_generator", () -> new ThermalGeneratorBlock(
+                    BlockBehaviour.Properties.of().strength(3.5f).sound(SoundType.METAL)));
 
-    public static final DeferredBlock<ThermalGeneratorBlock> COLD_GENERATOR =
-            BLOCKS.register("cold_generator", () -> new ThermalGeneratorBlock(
-                    BlockBehaviour.Properties.of().strength(3.5f).sound(SoundType.METAL),
-                    ThermalGeneratorBlock.Mode.COOL));
-
-    public static final DeferredHolder<Item, Item> HEAT_GENERATOR_ITEM =
-            ITEMS.register("heat_generator", () -> new BlockItem(HEAT_GENERATOR.get(), new Item.Properties()));
-
-    public static final DeferredHolder<Item, Item> COLD_GENERATOR_ITEM =
-            ITEMS.register("cold_generator", () -> new BlockItem(COLD_GENERATOR.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> TEMPERATURE_GENERATOR_ITEM =
+            ITEMS.register("temperature_generator", () -> new BlockItem(TEMPERATURE_GENERATOR.get(), new Item.Properties()));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ThermalGeneratorBlockEntity>> GENERATOR_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("thermal_generator",
-                    () -> BlockEntityType.Builder.of(ThermalGeneratorBlockEntity::new,
-                            HEAT_GENERATOR.get(), COLD_GENERATOR.get()).build(null));
+                    () -> BlockEntityType.Builder.of(ThermalGeneratorBlockEntity::new, TEMPERATURE_GENERATOR.get()).build(null));
 
     public static final DeferredHolder<MenuType<?>, MenuType<ThermalGeneratorMenu>> GENERATOR_MENU =
             MENUS.register("thermal_generator", () -> new MenuType<>(ThermalGeneratorMenu::new, FeatureFlags.DEFAULT_FLAGS));

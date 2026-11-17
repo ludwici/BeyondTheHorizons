@@ -29,6 +29,9 @@ import java.util.Set;
 public final class ThermalGeneratorBlockEntity extends BlockEntity implements MenuProvider {
 
     public static final int CAPACITY = 50_000;
+    public static final int MIN_TEMPERATURE = -200;
+    public static final int MAX_TEMPERATURE = 600;
+    public static final int DEFAULT_TEMPERATURE = 22;
     public static final int MAX_ROOM_AIR = 2400;
     private static final int ROOM_RADIUS = 24;
     private static final int SCAN_INTERVAL = 100;
@@ -51,17 +54,12 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
 
     public ThermalGeneratorBlockEntity(BlockPos pos, BlockState state) {
         super(ThermalGeneratorRegistry.GENERATOR_BLOCK_ENTITY.get(), pos, state);
-        ThermalGeneratorBlock.Mode mode = ((ThermalGeneratorBlock) state.getBlock()).mode();
-        targetTemperature = mode.initial();
-        currentTemperature = mode.initial();
+        targetTemperature = DEFAULT_TEMPERATURE;
+        currentTemperature = DEFAULT_TEMPERATURE;
     }
 
     public EnergyStorage getEnergy() {
         return energy;
-    }
-
-    public ThermalGeneratorBlock.Mode mode() {
-        return ((ThermalGeneratorBlock) getBlockState().getBlock()).mode();
     }
 
     public int targetTemperature() {
@@ -85,7 +83,7 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
     }
 
     public void setTargetTemperature(int temperature) {
-        int sanitized = Mth.clamp(temperature, mode().min(), mode().max());
+        int sanitized = Mth.clamp(temperature, MIN_TEMPERATURE, MAX_TEMPERATURE);
         if (sanitized != targetTemperature) {
             targetTemperature = sanitized;
             setChanged();
@@ -124,8 +122,7 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
 
         BlockPos outlet = pos.relative(state.getValue(ThermalGeneratorBlock.FACING));
         int baseTemperature = baseTemperature(server, outlet);
-        boolean canChange = mode() == ThermalGeneratorBlock.Mode.HEAT
-                ? targetTemperature > baseTemperature : targetTemperature < baseTemperature;
+        boolean canChange = targetTemperature != baseTemperature;
         int deviation = Math.abs(targetTemperature - baseTemperature);
         energyPerTick = canChange ? Math.max(1, 4 + volume / 45 + deviation / 45) : 0;
 

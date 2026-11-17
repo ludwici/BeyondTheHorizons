@@ -60,17 +60,14 @@
   "item.beyond_the_horizons.stabilization_module": "Stabilization Module",
   "block.beyond_the_horizons.anhydrite_crust": "Anhydrite Crust",
   "item.beyond_the_horizons.raw_anhydrite": "Raw Anhydrite",
-  "block.beyond_the_horizons.heat_generator": "Heat Generator",
-  "block.beyond_the_horizons.cold_generator": "Cooling Generator",
   "screen.beyond_the_horizons.target": "Setpoint: %s °C",
   "screen.beyond_the_horizons.actual": "Current: %s °C",
-  "screen.beyond_the_horizons.energy": "FE: %s / %s (%s/t)",
+  "screen.beyond_the_horizons.energy": "Power: %s FE/t",
   "screen.beyond_the_horizons.volume": "Room: %s blocks",
-  "button.beyond_the_horizons.apply": "Apply",
-  "screen.beyond_the_horizons.temperature_target": "Target temperature",
   "status.beyond_the_horizons.thermal.0": "Inactive",
   "status.beyond_the_horizons.thermal.1": "Working",
   "status.beyond_the_horizons.thermal.2": "Room is open",
   "status.beyond_the_horizons.thermal.3": "Insufficient energy",
-  "status.beyond_the_horizons.thermal.4": "Target already met"
+  "status.beyond_the_horizons.thermal.4": "Target already met",
+  "block.beyond_the_horizons.temperature_generator": "Temperature Generator"
 }
