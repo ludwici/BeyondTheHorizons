@@ -3,21 +3,33 @@ package dev.ludwici.beyondthehorizons.neoforge.lunar;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public final class LaserDrillItem extends Item {
 
     public static final int MAX_ENERGY = 16000;
     public static final int MAX_RECEIVE = 1000;
     public static final int ENERGY_PER_CRYSTAL = 400;
-    public static final float MINING_PROGRESS = 1.0f / 35.0f;
+    public static final double MAX_RANGE = 5.0;
+    private static final int TICKS_TO_MINE = 25;
+    private static final Map<ServerPlayer, MiningProgress> PROGRESS = new WeakHashMap<>();
 
     public LaserDrillItem(Properties properties) {
         super(properties);
@@ -29,6 +41,73 @@ public final class LaserDrillItem extends Item {
 
     public static boolean canMine(ItemStack stack) {
         return stack.is(LunarCrystalRegistry.LASER_DRILL.get()) && storedEnergy(stack) >= ENERGY_PER_CRYSTAL;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (hand != InteractionHand.MAIN_HAND || !canMine(stack) || player.isSpectator()) {
+            return InteractionResultHolder.fail(stack);
+        }
+
+        player.startUsingItem(hand);
+        return InteractionResultHolder.consume(stack);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity user) {
+        return 72000;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remainingUseDuration) {
+        if (!(level instanceof ServerLevel) || !(user instanceof ServerPlayer player)) {
+            return;
+        }
+
+        if (!player.getMainHandItem().is(LunarCrystalRegistry.LASER_DRILL.get()) || !canMine(stack)) {
+            PROGRESS.remove(player);
+            player.stopUsingItem();
+            return;
+        }
+
+        HitResult hit = player.pick(MAX_RANGE, 1.0f, false);
+        if (!(hit instanceof BlockHitResult blockHit) || hit.getType() != HitResult.Type.BLOCK) {
+            PROGRESS.remove(player);
+            return;
+        }
+
+        BlockPos pos = blockHit.getBlockPos();
+        if (!isLunarCrystal(level.getBlockState(pos))) {
+            PROGRESS.remove(player);
+            return;
+        }
+
+        MiningProgress progress = PROGRESS.get(player);
+        if (progress == null || !progress.target.equals(pos)) {
+            progress = new MiningProgress(pos);
+            PROGRESS.put(player, progress);
+        }
+
+        progress.ticks++;
+        if (progress.ticks < TICKS_TO_MINE) {
+            return;
+        }
+
+        PROGRESS.remove(player);
+        player.gameMode.destroyBlock(pos);
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeCharged) {
+        if (!level.isClientSide() && user instanceof ServerPlayer player) {
+            PROGRESS.remove(player);
+        }
     }
 
     @Override
@@ -67,5 +146,15 @@ public final class LaserDrillItem extends Item {
                 storedEnergy(stack), MAX_ENERGY).withStyle(ChatFormatting.AQUA));
         tooltip.add(Component.translatable("tooltip.beyond_the_horizons.laser_drill_function")
                 .withStyle(ChatFormatting.GRAY));
+    }
+
+    private static final class MiningProgress {
+
+        private final BlockPos target;
+        private int ticks;
+
+        private MiningProgress(BlockPos target) {
+            this.target = target.immutable();
+        }
     }
 }

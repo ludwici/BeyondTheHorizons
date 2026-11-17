@@ -49,5 +49,5 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Скопление лунных кристаллов",
   "item.beyond_the_horizons.laser_drill": "Лазерный бур",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Энергия: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Для добычи необходим заряженный лазерный бур"
+  "tooltip.beyond_the_horizons.laser_drill_function": "Удерживайте ПКМ для лазерного луча. Лунные кристаллы разрушаются при длительном наведении."
 }

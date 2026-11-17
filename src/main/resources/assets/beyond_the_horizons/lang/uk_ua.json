@@ -49,5 +49,5 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Скупчення місячних кристалів",
   "item.beyond_the_horizons.laser_drill": "Лазерний бур",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Енергія: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Для видобутку потрібен заряджений лазерний бур"
+  "tooltip.beyond_the_horizons.laser_drill_function": "Утримуйте ПКМ для лазерного променя. Місячні кристали руйнуються під час тривалого наведення."
 }

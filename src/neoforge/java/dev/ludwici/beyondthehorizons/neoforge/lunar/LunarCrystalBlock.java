@@ -19,6 +19,6 @@ public final class LunarCrystalBlock extends Block {
             return super.getDestroyProgress(state, player, level, pos);
         }
 
-        return LaserDrillItem.canMine(player.getMainHandItem()) ? LaserDrillItem.MINING_PROGRESS : 0.0f;
+        return 0.0f;
     }
 }
