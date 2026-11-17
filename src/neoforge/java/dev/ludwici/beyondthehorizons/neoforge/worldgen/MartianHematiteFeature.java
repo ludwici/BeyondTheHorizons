@@ -65,21 +65,21 @@ public final class MartianHematiteFeature extends Feature<NoneFeatureConfigurati
             centerY = surfaceY - cover;
         }
 
-        int halfLength = 8 + random.nextInt(5);
-        int halfWidth = 2 + random.nextInt(2);
+        int halfLength = 6 + random.nextInt(3);
+        int halfWidth = 1 + random.nextInt(2);
         double slope = (random.nextDouble() - 0.5) * 0.22;
         double phase = random.nextDouble() * Math.PI * 2.0;
-        double curve = (random.nextDouble() - 0.5) * 1.8;
+        double curve = (random.nextDouble() - 0.5) * 1.2;
         boolean secondaryLayer = random.nextFloat() < 0.35f;
         BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
         int placed = 0;
 
         for (int layer = 0; layer < (secondaryLayer ? 2 : 1); layer++) {
-            int layerLength = layer == 0 ? halfLength : Math.max(4, halfLength - 3);
+            int layerLength = layer == 0 ? halfLength : Math.max(3, halfLength - 2);
             int layerWidth = layer == 0 ? halfWidth : Math.max(1, halfWidth - 1);
             int layerY = centerY - layer * (2 + random.nextInt(2));
             double layerPhase = phase + layer * 0.65;
-            double layerOffset = layer == 0 ? 0.0 : (random.nextBoolean() ? 1.0 : -1.0);
+            double layerOffset = layer == 0 ? 0.0 : (random.nextBoolean() ? 0.75 : -0.75);
 
             for (int along = -layerLength; along <= layerLength; along++) {
                 double lengthFraction = (double) along / layerLength;
@@ -107,7 +107,7 @@ public final class MartianHematiteFeature extends Feature<NoneFeatureConfigurati
                     int z = centerZ + (alongX ? across : along);
                     int y = layerY + (int) Math.round(along * slope
                             + 0.7 * Math.sin(along * 0.29 + layerPhase));
-                    int thickness = random.nextFloat() < 0.20f ? 2 : 1;
+                    int thickness = random.nextFloat() < 0.10f ? 2 : 1;
 
                     for (int dy = 0; dy < thickness; dy++) {
                         int worldY = y + dy;
