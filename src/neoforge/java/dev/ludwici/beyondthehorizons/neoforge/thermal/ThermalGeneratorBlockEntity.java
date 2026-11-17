@@ -2,15 +2,15 @@ package dev.ludwici.beyondthehorizons.neoforge.thermal;
 
 import earth.terrarium.adastra.api.systems.OxygenApi;
 import earth.terrarium.adastra.api.systems.TemperatureApi;
+import earth.terrarium.adastra.common.config.MachineConfig;
+import earth.terrarium.adastra.common.tags.ModBlockTags;
+import earth.terrarium.adastra.common.utils.floodfill.FloodFill3D;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.EnergyStorage;
 
-import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,16 +31,8 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
     public static final int MIN_TEMPERATURE = -200;
     public static final int MAX_TEMPERATURE = 600;
     public static final int DEFAULT_TEMPERATURE = 22;
-    public static final int MAX_ROOM_AIR = 2400;
-    private static final int ROOM_RADIUS = 24;
-    private static final int SCAN_INTERVAL = 100;
     private static final int TEMPERATURE_INTERVAL = 20;
     private static final int DEGREES_PER_STEP = 12;
-
-    private static final TagKey<Block> PASSES_AIR = TagKey.create(Registries.BLOCK,
-            ResourceLocation.fromNamespaceAndPath("ad_astra", "passes_flood_fill"));
-    private static final TagKey<Block> BLOCKS_AIR = TagKey.create(Registries.BLOCK,
-            ResourceLocation.fromNamespaceAndPath("ad_astra", "blocks_flood_fill"));
 
     private final InternalEnergyStorage energy = new InternalEnergyStorage();
     private Set<BlockPos> chamberPositions = Set.of();
@@ -111,7 +102,7 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
 
     private void tick(ServerLevel server, BlockPos pos, BlockState state) {
         ticks++;
-        if (ticks == 1 || ticks % SCAN_INTERVAL == 0) {
+        if (ticks == 1 || ticks % Math.max(1, MachineConfig.distributionRefreshRate) == 0) {
             refreshChamber(server, pos, state);
         }
 
@@ -192,81 +183,39 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
     }
 
     private Room scanRoom(ServerLevel level, BlockPos outlet) {
-        if (!level.hasChunkAt(outlet) || !passable(level, outlet)) {
+        if (!level.hasChunkAt(outlet)) {
             return null;
         }
 
-        Set<BlockPos> air = new HashSet<>();
-        Set<BlockPos> affected = new HashSet<>();
-        ArrayDeque<BlockPos> queue = new ArrayDeque<>();
-        queue.add(outlet);
-        boolean leak = false;
+        BlockState outletState = level.getBlockState(outlet);
+        if (outletState.is(ModBlockTags.BLOCKS_FLOOD_FILL)
+                || (outletState.isCollisionShapeFullBlock(level, outlet)
+                && !outletState.is(ModBlockTags.PASSES_FLOOD_FILL))) {
+            return null;
+        }
 
-        while (!queue.isEmpty()) {
-            BlockPos candidate = queue.removeFirst();
-            if (air.contains(candidate)) {
-                continue;
-            }
+        int limit = Math.max(2, MachineConfig.maxDistributionBlocks);
+        Set<BlockPos> distributed = FloodFill3D.run(
+                level, outlet, limit, FloodFill3D.TEST_FULL_SEAL, false);
+        if (distributed.isEmpty() || distributed.size() >= limit) {
+            return null;
+        }
 
-            if (candidate.getY() < level.getMinBuildHeight() || candidate.getY() >= level.getMaxBuildHeight()
-                    || !level.hasChunkAt(candidate)
-                    || Math.abs(candidate.getX() - outlet.getX()) > ROOM_RADIUS
-                    || Math.abs(candidate.getY() - outlet.getY()) > ROOM_RADIUS
-                    || Math.abs(candidate.getZ() - outlet.getZ()) > ROOM_RADIUS) {
-                leak = true;
-                break;
-            }
-
-            if (!passable(level, candidate)) {
-                continue;
-            }
-
-            air.add(candidate);
-            affected.add(candidate);
-            if (air.size() > MAX_ROOM_AIR) {
-                leak = true;
-                break;
-            }
-
+        Set<BlockPos> affected = new HashSet<>(distributed);
+        for (BlockPos inside : distributed) {
             for (Direction direction : Direction.values()) {
-                BlockPos next = candidate.relative(direction);
-                if (!level.hasChunkAt(next)) {
-                    leak = true;
-                    break;
+                BlockPos neighbor = inside.relative(direction);
+                if (!level.hasChunkAt(neighbor)) {
+                    return null;
                 }
 
-                if (passable(level, next)) {
-                    if (!air.contains(next)) {
-                        queue.addLast(next);
-                    }
-                } else {
-                    affected.add(next);
+                if (level.getBlockState(neighbor).isCollisionShapeFullBlock(level, neighbor)) {
+                    affected.add(neighbor);
                 }
             }
-
-            if (leak) {
-                break;
-            }
         }
 
-        if (leak || air.isEmpty()) {
-            return null;
-        }
-
-        return new Room(affected, air.size());
-    }
-
-    private boolean passable(ServerLevel level, BlockPos pos) {
-        BlockState state = level.getBlockState(pos);
-        if (state.is(BLOCKS_AIR)) {
-            return false;
-        }
-
-        if (state.is(PASSES_AIR)) {
-            return true;
-        }
-
-        return !state.isCollisionShapeFullBlock(level, pos);
+        return new Room(affected, distributed.size());
     }
 
     @Override
