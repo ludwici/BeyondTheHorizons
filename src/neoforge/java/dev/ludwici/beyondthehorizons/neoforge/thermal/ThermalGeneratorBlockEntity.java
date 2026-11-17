@@ -48,6 +48,7 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
     private int volume;
     private int targetTemperature;
     private int currentTemperature;
+    private boolean temperatureInitialized;
     private int energyPerTick;
     private int status;
     private int ticks;
@@ -117,6 +118,14 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
         if (chamberPositions.isEmpty()) {
             energyPerTick = 0;
             status = 2;
+            if (temperatureInitialized && ticks % TEMPERATURE_INTERVAL == 0) {
+                BlockPos outlet = pos.relative(state.getValue(ThermalGeneratorBlock.FACING));
+                int ambient = baseTemperature(server, outlet);
+                currentTemperature = Mth.clamp(ambient,
+                        currentTemperature - DEGREES_PER_STEP, currentTemperature + DEGREES_PER_STEP);
+                setChanged();
+            }
+
             return;
         }
 
@@ -172,10 +181,12 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
 
         if (!previous.equals(chamberPositions)) {
             ThermalZoneManager.clear(level, pos);
-            if (!chamberPositions.isEmpty()) {
-                currentTemperature = (short) baseTemperature(level, outlet);
-            }
+            setChanged();
+        }
 
+        if (!chamberPositions.isEmpty() && !temperatureInitialized) {
+            currentTemperature = baseTemperature(level, outlet);
+            temperatureInitialized = true;
             setChanged();
         }
     }
@@ -264,6 +275,7 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
         tag.put("Energy", energy.serializeNBT(provider));
         tag.putInt("TargetTemperature", targetTemperature);
         tag.putInt("CurrentTemperature", currentTemperature);
+        tag.putBoolean("TemperatureInitialized", temperatureInitialized);
     }
 
     @Override
@@ -280,6 +292,9 @@ public final class ThermalGeneratorBlockEntity extends BlockEntity implements Me
         if (tag.contains("CurrentTemperature")) {
             currentTemperature = tag.getInt("CurrentTemperature");
         }
+
+        temperatureInitialized = tag.contains("TemperatureInitialized")
+                ? tag.getBoolean("TemperatureInitialized") : tag.contains("CurrentTemperature");
     }
 
     @Override
