@@ -1,33 +1,48 @@
 {
   "variants": {
-    "facing=north,wall=false": {
+    "face=floor,facing=north": {
       "model": "beyond_the_horizons:block/temperature_display"
     },
-    "facing=east,wall=false": {
+    "face=floor,facing=east": {
       "model": "beyond_the_horizons:block/temperature_display",
       "y": 90
     },
-    "facing=south,wall=false": {
+    "face=floor,facing=south": {
       "model": "beyond_the_horizons:block/temperature_display",
       "y": 180
     },
-    "facing=west,wall=false": {
+    "face=floor,facing=west": {
       "model": "beyond_the_horizons:block/temperature_display",
       "y": 270
     },
-    "facing=north,wall=true": {
+    "face=wall,facing=north": {
       "model": "beyond_the_horizons:block/temperature_display_wall"
     },
-    "facing=east,wall=true": {
+    "face=wall,facing=east": {
       "model": "beyond_the_horizons:block/temperature_display_wall",
       "y": 90
     },
-    "facing=south,wall=true": {
+    "face=wall,facing=south": {
       "model": "beyond_the_horizons:block/temperature_display_wall",
       "y": 180
     },
-    "facing=west,wall=true": {
+    "face=wall,facing=west": {
       "model": "beyond_the_horizons:block/temperature_display_wall",
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "beyond_the_horizons:block/temperature_display_ceiling"
+    },
+    "face=ceiling,facing=east": {
+      "model": "beyond_the_horizons:block/temperature_display_ceiling",
+      "y": 90
+    },
+    "face=ceiling,facing=south": {
+      "model": "beyond_the_horizons:block/temperature_display_ceiling",
+      "y": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "beyond_the_horizons:block/temperature_display_ceiling",
       "y": 270
     }
   }

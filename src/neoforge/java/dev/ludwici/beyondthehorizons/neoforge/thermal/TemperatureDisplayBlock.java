@@ -18,10 +18,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.AttachFace;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,22 +30,20 @@ public final class TemperatureDisplayBlock extends BaseEntityBlock {
 
     public static final MapCodec<TemperatureDisplayBlock> CODEC = simpleCodec(TemperatureDisplayBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    public static final BooleanProperty WALL = BooleanProperty.create("wall");
+    public static final EnumProperty<AttachFace> FACE = BlockStateProperties.ATTACH_FACE;
 
-    private static final VoxelShape WALL_NORTH = box(2, 3, 13, 14, 13, 15);
-    private static final VoxelShape WALL_SOUTH = box(2, 3, 1, 14, 13, 3);
-    private static final VoxelShape WALL_EAST = box(1, 3, 2, 3, 13, 14);
-    private static final VoxelShape WALL_WEST = box(13, 3, 2, 15, 13, 14);
-    private static final VoxelShape STANDING_NORTH_SOUTH = Shapes.or(
-            box(2, 6, 7, 14, 14, 9), box(7, 0, 7, 9, 6, 9));
-    private static final VoxelShape STANDING_EAST_WEST = Shapes.or(
-            box(7, 6, 2, 9, 14, 14), box(7, 0, 7, 9, 6, 9));
+    private static final VoxelShape WALL_NORTH = box(2, 3, 14, 14, 13, 16);
+    private static final VoxelShape WALL_SOUTH = box(2, 3, 0, 14, 13, 2);
+    private static final VoxelShape WALL_EAST = box(0, 3, 2, 2, 13, 14);
+    private static final VoxelShape WALL_WEST = box(14, 3, 2, 16, 13, 14);
+    private static final VoxelShape FLOOR_SHAPE = box(2, 0, 3, 14, 2, 13);
+    private static final VoxelShape CEILING_SHAPE = box(2, 14, 3, 14, 16, 13);
 
     public TemperatureDisplayBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(WALL, false));
+                .setValue(FACE, AttachFace.FLOOR));
     }
 
     @Override
@@ -54,43 +53,43 @@ public final class TemperatureDisplayBlock extends BaseEntityBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
-        builder.add(FACING, WALL);
+        builder.add(FACING, FACE);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction clickedFace = context.getClickedFace();
-        BlockState placement;
-        if (clickedFace == Direction.UP) {
-            placement = defaultBlockState()
-                    .setValue(WALL, false)
-                    .setValue(FACING, context.getHorizontalDirection().getOpposite());
-        } else if (clickedFace.getAxis().isHorizontal()) {
-            placement = defaultBlockState()
-                    .setValue(WALL, true)
-                    .setValue(FACING, clickedFace);
-        } else {
-            return null;
-        }
-
+        AttachFace face = switch (clickedFace) {
+            case UP -> AttachFace.FLOOR;
+            case DOWN -> AttachFace.CEILING;
+            default -> AttachFace.WALL;
+        };
+        Direction facing = face == AttachFace.WALL
+                ? clickedFace : context.getHorizontalDirection().getOpposite();
+        BlockState placement = defaultBlockState().setValue(FACING, facing).setValue(FACE, face);
         return placement.canSurvive(context.getLevel(), context.getClickedPos()) ? placement : null;
     }
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        boolean wall = state.getValue(WALL);
-        Direction supportDirection = wall ? state.getValue(FACING).getOpposite() : Direction.DOWN;
+        Direction supportDirection = supportDirection(state);
         BlockPos supportPos = pos.relative(supportDirection);
         return level.getBlockState(supportPos).isFaceSturdy(level, supportPos, supportDirection.getOpposite());
+    }
+
+    private static Direction supportDirection(BlockState state) {
+        return switch (state.getValue(FACE)) {
+            case FLOOR -> Direction.DOWN;
+            case CEILING -> Direction.UP;
+            case WALL -> state.getValue(FACING).getOpposite();
+        };
     }
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
                                      LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        Direction supportDirection = state.getValue(WALL)
-                ? state.getValue(FACING).getOpposite() : Direction.DOWN;
-        if (direction == supportDirection && !state.canSurvive(level, pos)) {
+        if (direction == supportDirection(state) && !state.canSurvive(level, pos)) {
             return Blocks.AIR.defaultBlockState();
         }
 
@@ -99,17 +98,16 @@ public final class TemperatureDisplayBlock extends BaseEntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Direction facing = state.getValue(FACING);
-        if (!state.getValue(WALL)) {
-            return facing.getAxis() == Direction.Axis.Z ? STANDING_NORTH_SOUTH : STANDING_EAST_WEST;
-        }
-
-        return switch (facing) {
-            case NORTH -> WALL_NORTH;
-            case SOUTH -> WALL_SOUTH;
-            case EAST -> WALL_EAST;
-            case WEST -> WALL_WEST;
-            default -> WALL_NORTH;
+        return switch (state.getValue(FACE)) {
+            case FLOOR -> FLOOR_SHAPE;
+            case CEILING -> CEILING_SHAPE;
+            case WALL -> switch (state.getValue(FACING)) {
+                case NORTH -> WALL_NORTH;
+                case SOUTH -> WALL_SOUTH;
+                case EAST -> WALL_EAST;
+                case WEST -> WALL_WEST;
+                default -> WALL_NORTH;
+            };
         };
     }
 

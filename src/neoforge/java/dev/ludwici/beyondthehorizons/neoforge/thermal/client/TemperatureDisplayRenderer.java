@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -37,16 +38,23 @@ public final class TemperatureDisplayRenderer implements BlockEntityRenderer<Tem
     public void render(TemperatureDisplayBlockEntity display, float partialTick, PoseStack pose,
                        MultiBufferSource buffers, int packedLight, int packedOverlay) {
         Direction facing = display.getBlockState().getValue(TemperatureDisplayBlock.FACING);
-        boolean wall = display.getBlockState().getValue(TemperatureDisplayBlock.WALL);
+        AttachFace face = display.getBlockState().getValue(TemperatureDisplayBlock.FACE);
         String value = display.hasReading() ? display.temperature() + " °C" : "-- °C";
 
         pose.pushPose();
         pose.translate(0.5, 0.5, 0.5);
         pose.mulPose(Axis.YP.rotationDegrees(-facing.toYRot()));
-        if (wall) {
-            pose.translate(0.0, 0.0, -0.308);
-        } else {
-            pose.translate(0.0, 0.125, 0.065);
+
+        switch (face) {
+            case WALL -> pose.translate(0.0, 0.0, -0.371);
+            case FLOOR -> {
+                pose.translate(0.0, -0.373, 0.0);
+                pose.mulPose(Axis.XP.rotationDegrees(-90.0f));
+            }
+            case CEILING -> {
+                pose.translate(0.0, 0.373, 0.0);
+                pose.mulPose(Axis.XP.rotationDegrees(90.0f));
+            }
         }
 
         pose.scale(0.014f, -0.023f, 0.014f);
