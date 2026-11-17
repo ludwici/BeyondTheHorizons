@@ -5,6 +5,7 @@ import dev.ludwici.beyondthehorizons.neoforge.environment.EnvironmentAttributes;
 import dev.ludwici.beyondthehorizons.neoforge.environment.EnvironmentCommands;
 import dev.ludwici.beyondthehorizons.neoforge.environment.EnvironmentEvents;
 import dev.ludwici.beyondthehorizons.neoforge.environment.NeptuneEnvironment;
+import dev.ludwici.beyondthehorizons.neoforge.items.BeyondTheHorizonsCreativeTabs;
 import dev.ludwici.beyondthehorizons.neoforge.items.DivingSuitItems;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.NeptuneWorldgen;
 import earth.terrarium.adastra.api.events.AdAstraEvents;
@@ -20,6 +21,7 @@ public final class BeyondTheHorizonsNeoForge {
         NeptuneWorldgen.register(modBus);
         EnvironmentAttributes.register(modBus);
         DivingSuitItems.register(modBus);
+        BeyondTheHorizonsCreativeTabs.register(modBus);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerLogout);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerRespawn);

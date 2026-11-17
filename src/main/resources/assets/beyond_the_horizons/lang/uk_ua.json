@@ -18,5 +18,6 @@
   "item.beyond_the_horizons.expedition_diving_chestplate": "Експедиційний підводний скафандр",
   "item.beyond_the_horizons.expedition_diving_leggings": "Експедиційні водолазні поножі",
   "item.beyond_the_horizons.expedition_diving_boots": "Експедиційні водолазні черевики",
-  "tooltip.beyond_the_horizons.expedition_diving_suit": "Повний комплект: +3,0 бар стійкості до тиску"
+  "tooltip.beyond_the_horizons.expedition_diving_suit": "Повний комплект: +3,0 бар стійкості до тиску",
+  "itemGroup.beyond_the_horizons": "Ad Astra: Beyond The Horizons"
 }

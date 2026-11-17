@@ -18,5 +18,6 @@
   "item.beyond_the_horizons.expedition_diving_chestplate": "Экспедиционный подводный скафандр",
   "item.beyond_the_horizons.expedition_diving_leggings": "Экспедиционные водолазные поножи",
   "item.beyond_the_horizons.expedition_diving_boots": "Экспедиционные водолазные ботинки",
-  "tooltip.beyond_the_horizons.expedition_diving_suit": "Полный комплект: +3,0 бар устойчивости к давлению"
+  "tooltip.beyond_the_horizons.expedition_diving_suit": "Полный комплект: +3,0 бар устойчивости к давлению",
+  "itemGroup.beyond_the_horizons": "Ad Astra: Beyond The Horizons"
 }

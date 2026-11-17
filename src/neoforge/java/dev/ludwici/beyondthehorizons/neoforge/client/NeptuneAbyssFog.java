@@ -2,6 +2,7 @@ package dev.ludwici.beyondthehorizons.neoforge.client;
 
 import dev.ludwici.beyondthehorizons.BeyondTheHorizons;
 import dev.ludwici.beyondthehorizons.neoforge.environment.NeptuneEnvironment;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,13 @@ public final class NeptuneAbyssFog {
 
     private static final ResourceKey<Biome> PRESSURE_ABYSS = ResourceKey.create(
             Registries.BIOME, ResourceLocation.fromNamespaceAndPath(BeyondTheHorizons.MOD_ID, "pressure_abyss"));
+
+    private static final double FOG_BLEND_DURATION_MILLIS = 1600.0;
+    private static final long MAX_FRAME_DELTA_MILLIS = 250L;
+
+    private static ClientLevel lastLevel;
+    private static long lastUpdateMillis;
+    private static float blendedStrength;
 
     private NeptuneAbyssFog() {
     }
@@ -44,26 +52,49 @@ public final class NeptuneAbyssFog {
             return;
         }
 
-        float targetDistance = Mth.lerp(strength, 18.0f, 9.0f);
-        event.setNearPlaneDistance(-2.0f);
-        event.setFarPlaneDistance(Math.min(event.getFarPlaneDistance(), targetDistance));
+        float normalNear = event.getNearPlaneDistance();
+        float normalFar = event.getFarPlaneDistance();
+
+        event.setNearPlaneDistance(Mth.lerp(strength, normalNear, -2.0f));
+        event.setFarPlaneDistance(Mth.lerp(strength, normalFar, Math.min(normalFar, 9.0f)));
         event.setCanceled(true);
     }
 
     private static float strength(BlockPos pos, FogType fogType) {
-        if (fogType != FogType.WATER) {
-            return 0.0f;
-        }
-
         ClientLevel level = Minecraft.getInstance().level;
-        if (level == null || !level.dimension().equals(NeptuneEnvironment.DIMENSION) || pos.getY() >= 40) {
+        long now = Util.getMillis();
+
+        if (level != lastLevel) {
+            lastLevel = level;
+            lastUpdateMillis = now;
+            blendedStrength = 0.0f;
+        }
+
+        if (level == null || fogType != FogType.WATER) {
+            blendedStrength = 0.0f;
+            lastUpdateMillis = now;
             return 0.0f;
         }
 
-        if (!level.getBiome(pos).is(PRESSURE_ABYSS)) {
-            return 0.0f;
+        float target = 0.0f;
+
+        if (level.dimension().equals(NeptuneEnvironment.DIMENSION)
+                && pos.getY() < 40
+                && level.getBiome(pos).is(PRESSURE_ABYSS)) {
+            target = Mth.clamp((40.0f - pos.getY()) / 16.0f, 0.0f, 1.0f);
         }
 
-        return Mth.clamp((40.0f - pos.getY()) / 14.0f, 0.45f, 1.0f);
+        long elapsedMillis = Math.min(MAX_FRAME_DELTA_MILLIS, Math.max(0L, now - lastUpdateMillis));
+        if (elapsedMillis > 0L) {
+            float blend = (float) (1.0 - Math.exp(-elapsedMillis / FOG_BLEND_DURATION_MILLIS));
+            blendedStrength = Mth.lerp(blend, blendedStrength, target);
+            lastUpdateMillis = now;
+        }
+
+        if (Math.abs(blendedStrength - target) < 0.001f) {
+            blendedStrength = target;
+        }
+
+        return blendedStrength;
     }
 }

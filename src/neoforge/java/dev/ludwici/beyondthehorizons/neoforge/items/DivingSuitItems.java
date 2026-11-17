@@ -6,11 +6,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -41,18 +38,6 @@ public final class DivingSuitItems {
 
     public static void register(IEventBus modBus) {
         ITEMS.register(modBus);
-        modBus.addListener(DivingSuitItems::onCreativeTab);
-    }
-
-    private static void onCreativeTab(BuildCreativeModeTabContentsEvent event) {
-        if (!event.getTabKey().equals(CreativeModeTabs.COMBAT)) {
-            return;
-        }
-
-        event.accept(EXPEDITION_HELMET.get());
-        event.accept(EXPEDITION_CHESTPLATE.get());
-        event.accept(EXPEDITION_LEGGINGS.get());
-        event.accept(EXPEDITION_BOOTS.get());
     }
 
     public static boolean isFullExpeditionSet(LivingEntity entity) {

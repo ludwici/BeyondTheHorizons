@@ -62,9 +62,9 @@ See [test instructions](docs/planning/environment-pressure-implementation.md). W
 
 ### Expedition diving suit and abyss visibility
 
-The first **Expedition Diving Suit** can be crafted from steel/Desh components: helmet, chestplate, leggings and boots. Wearing the entire set adds **3 bar** of pressure protection (default total **7.5 bar**). This protects only shallower depths, not the deepest Pressure Abyss. The chestpiece reuses Ad Astra oxygen storage and underwater breathing. The current suit appearance reuses Ad Astra art while dedicated textures are still being designed.
+The first **Expedition Diving Suit** can be crafted from steel/Desh components: helmet, chestplate, leggings and boots. All BeyondTheHorizons items are shown in a dedicated **Ad Astra: Beyond The Horizons** creative tab. Wearing the entire set adds **3 bar** of pressure protection (default total **7.5 bar**). This protects only shallower depths, not the deepest Pressure Abyss. The chestpiece reuses Ad Astra oxygen storage and underwater breathing. The current suit appearance reuses Ad Astra art while dedicated textures are still being designed.
 
-Pressure Abyss has a stronger blue-black underwater fog and shorter visibility on NeoForge. This is rendered client-side and may vary with third-party shaders.
+Pressure Abyss has a stronger blue-black underwater fog and shorter visibility on NeoForge, with smooth time-based entry/exit and a 16-block depth ramp. This is rendered client-side and may vary with third-party shaders.
 
 See [diving-suit test plan](docs/planning/expedition-diving-suit.md).
 
