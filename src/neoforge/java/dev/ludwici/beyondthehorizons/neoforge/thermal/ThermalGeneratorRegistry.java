@@ -32,9 +32,20 @@ public final class ThermalGeneratorRegistry {
     public static final DeferredHolder<Item, Item> TEMPERATURE_GENERATOR_ITEM =
             ITEMS.register("temperature_generator", () -> new BlockItem(TEMPERATURE_GENERATOR.get(), new Item.Properties()));
 
+    public static final DeferredBlock<TemperatureDisplayBlock> TEMPERATURE_DISPLAY =
+            BLOCKS.register("temperature_display", () -> new TemperatureDisplayBlock(
+                    BlockBehaviour.Properties.of().strength(2.5f).sound(SoundType.METAL)));
+
+    public static final DeferredHolder<Item, Item> TEMPERATURE_DISPLAY_ITEM =
+            ITEMS.register("temperature_display", () -> new BlockItem(TEMPERATURE_DISPLAY.get(), new Item.Properties()));
+
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ThermalGeneratorBlockEntity>> GENERATOR_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("thermal_generator",
                     () -> BlockEntityType.Builder.of(ThermalGeneratorBlockEntity::new, TEMPERATURE_GENERATOR.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<TemperatureDisplayBlockEntity>> DISPLAY_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("temperature_display",
+                    () -> BlockEntityType.Builder.of(TemperatureDisplayBlockEntity::new, TEMPERATURE_DISPLAY.get()).build(null));
 
     public static final DeferredHolder<MenuType<?>, MenuType<ThermalGeneratorMenu>> GENERATOR_MENU =
             MENUS.register("thermal_generator", () -> new MenuType<>(ThermalGeneratorMenu::new, FeatureFlags.DEFAULT_FLAGS));

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "SGS",
+    "RCR",
+    "SDS"
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:comparator"
+    },
+    "D": {
+      "tag": "ad_astra:desh_plates"
+    }
+  },
+  "result": {
+    "id": "beyond_the_horizons:temperature_display",
+    "count": 1
+  }
+}

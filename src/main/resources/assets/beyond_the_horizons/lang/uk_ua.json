@@ -69,5 +69,6 @@
   "status.beyond_the_horizons.thermal.2": "Приміщення негерметичне",
   "status.beyond_the_horizons.thermal.3": "Недостатньо енергії",
   "status.beyond_the_horizons.thermal.4": "Ціль уже досягнута",
-  "block.beyond_the_horizons.temperature_generator": "Генератор температури"
+  "block.beyond_the_horizons.temperature_generator": "Генератор температури",
+  "block.beyond_the_horizons.temperature_display": "Температурне табло"
 }

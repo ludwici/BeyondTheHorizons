@@ -69,5 +69,6 @@
   "status.beyond_the_horizons.thermal.2": "Room is open",
   "status.beyond_the_horizons.thermal.3": "Insufficient energy",
   "status.beyond_the_horizons.thermal.4": "Target already met",
-  "block.beyond_the_horizons.temperature_generator": "Temperature Generator"
+  "block.beyond_the_horizons.temperature_generator": "Temperature Generator",
+  "block.beyond_the_horizons.temperature_display": "Temperature Display"
 }
