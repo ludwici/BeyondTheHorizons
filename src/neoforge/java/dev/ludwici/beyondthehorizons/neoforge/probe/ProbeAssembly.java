@@ -2,6 +2,7 @@ package dev.ludwici.beyondthehorizons.neoforge.probe;
 
 import dev.ludwici.beyondthehorizons.BeyondTheHorizons;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
@@ -92,6 +93,43 @@ public final class ProbeAssembly {
         }
 
         return data.copyTag().getCompound(PROBE_DATA_KEY);
+    }
+
+    public static ItemStack[] disassemble(ItemStack probe) {
+        CompoundTag components = getModules(probe);
+        if (!components.contains("environment")) {
+            return new ItemStack[0];
+        }
+
+        String[] fields = {"hull", "propulsion", "power", "communication", "protection", "payload"};
+        ItemStack[] parts = new ItemStack[MODULE_COUNT];
+
+        for (int slot = 0; slot < MODULE_COUNT; slot++) {
+            String id = components.getString(fields[slot]);
+            if (slot == PROTECTION && id.isEmpty()) {
+                parts[slot] = ItemStack.EMPTY;
+                continue;
+            }
+
+            ResourceLocation key = ResourceLocation.tryParse(id);
+            if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+                return new ItemStack[0];
+            }
+
+            ItemStack part = new ItemStack(BuiltInRegistries.ITEM.get(key));
+            if (!accepts(slot, part)) {
+                return new ItemStack[0];
+            }
+
+            parts[slot] = part;
+        }
+
+        if (!components.getString("environment").equals(parts[PROPULSION].is(SpaceYRegistry.WATER_THRUSTER.get())
+                ? "water" : "atmosphere")) {
+            return new ItemStack[0];
+        }
+
+        return parts;
     }
 
     private static String itemId(ItemStack stack) {

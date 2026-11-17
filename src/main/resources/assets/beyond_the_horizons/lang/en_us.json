@@ -41,5 +41,7 @@
   "tooltip.beyond_the_horizons.probe_pressure": "Design pressure rating: %s bar",
   "tooltip.beyond_the_horizons.probe_modules": "Components: %s | %s | %s | %s | %s | %s",
   "probe.beyond_the_horizons.environment.water": "Water",
-  "probe.beyond_the_horizons.environment.atmosphere": "Atmosphere"
+  "probe.beyond_the_horizons.environment.atmosphere": "Atmosphere",
+  "button.beyond_the_horizons.disassemble": "Disassemble",
+  "tooltip.beyond_the_horizons.probe_reconfigure": "Use Disassemble in SpaceY Workbench to replace modules"
 }

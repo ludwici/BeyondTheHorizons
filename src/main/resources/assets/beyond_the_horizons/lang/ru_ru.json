@@ -41,5 +41,7 @@
   "tooltip.beyond_the_horizons.probe_pressure": "Расчётное давление: %s бар",
   "tooltip.beyond_the_horizons.probe_modules": "Компоненты: %s | %s | %s | %s | %s | %s",
   "probe.beyond_the_horizons.environment.water": "Вода",
-  "probe.beyond_the_horizons.environment.atmosphere": "Атмосфера"
+  "probe.beyond_the_horizons.environment.atmosphere": "Атмосфера",
+  "button.beyond_the_horizons.disassemble": "Разобрать",
+  "tooltip.beyond_the_horizons.probe_reconfigure": "Для замены модулей разберите зонд в верстаке SpaceY"
 }

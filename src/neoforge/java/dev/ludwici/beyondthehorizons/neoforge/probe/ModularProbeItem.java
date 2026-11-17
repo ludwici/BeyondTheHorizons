@@ -33,13 +33,7 @@ public final class ModularProbeItem extends Item {
         tooltip.add(Component.translatable("tooltip.beyond_the_horizons.probe_pressure",
                         String.format(Locale.ROOT, "%.1f", modules.getDouble("pressureRatingBar")))
                 .withStyle(ChatFormatting.GRAY));
-        tooltip.add(Component.translatable("tooltip.beyond_the_horizons.probe_modules",
-                        modules.getString("hull"),
-                        modules.getString("propulsion"),
-                        modules.getString("power"),
-                        modules.getString("communication"),
-                        modules.getString("protection").isEmpty() ? "-" : modules.getString("protection"),
-                        modules.getString("payload"))
-                .withStyle(ChatFormatting.DARK_GRAY));
+        tooltip.add(Component.translatable("tooltip.beyond_the_horizons.probe_reconfigure")
+                .withStyle(ChatFormatting.GRAY));
     }
 }

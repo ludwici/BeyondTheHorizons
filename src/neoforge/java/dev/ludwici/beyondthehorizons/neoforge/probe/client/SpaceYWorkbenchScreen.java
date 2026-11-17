@@ -4,6 +4,7 @@ import dev.ludwici.beyondthehorizons.BeyondTheHorizons;
 import dev.ludwici.beyondthehorizons.neoforge.probe.SpaceYRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.probe.SpaceYWorkbenchMenu;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
@@ -29,6 +30,16 @@ public final class SpaceYWorkbenchScreen extends AbstractContainerScreen<SpaceYW
         this.titleLabelY = 8;
         this.inventoryLabelX = 8;
         this.inventoryLabelY = 121;
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+        this.addRenderableWidget(Button.builder(Component.translatable("button.beyond_the_horizons.disassemble"), button -> {
+            if (this.minecraft != null && this.minecraft.gameMode != null) {
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
+            }
+        }).bounds(this.leftPos + 109, this.topPos + 103, 61, 20).build());
     }
 
     @SubscribeEvent

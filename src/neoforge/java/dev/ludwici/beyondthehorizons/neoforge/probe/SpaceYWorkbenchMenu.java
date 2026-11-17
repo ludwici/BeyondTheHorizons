@@ -120,6 +120,32 @@ public final class SpaceYWorkbenchMenu extends AbstractContainerMenu {
     }
 
     @Override
+    public boolean clickMenuButton(Player player, int buttonId) {
+        if (buttonId != 0 || player.level().isClientSide()) {
+            return false;
+        }
+
+        for (int slot = 0; slot < ProbeAssembly.MODULE_COUNT; slot++) {
+            if (!this.input.getItem(slot).isEmpty()) {
+                return false;
+            }
+        }
+
+        ItemStack[] parts = ProbeAssembly.disassemble(this.getCarried());
+        if (parts.length != ProbeAssembly.MODULE_COUNT) {
+            return false;
+        }
+
+        this.setCarried(ItemStack.EMPTY);
+        for (int slot = 0; slot < ProbeAssembly.MODULE_COUNT; slot++) {
+            this.input.setItem(slot, parts[slot]);
+        }
+
+        this.slotsChanged(this.input);
+        return true;
+    }
+
+    @Override
     public boolean stillValid(Player player) {
         return stillValid(this.access, player, SpaceYRegistry.SPACEY_WORKBENCH.get());
     }
