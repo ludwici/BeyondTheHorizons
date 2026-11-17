@@ -62,9 +62,10 @@ public final class LaserDrillBeamRenderer {
 
             right = right.normalize();
             Vec3 start = eye.add(direction.scale(0.24)).add(right.scale(0.17)).add(0.0, -0.15, 0.0);
-            HitResult hit = player.pick(LaserDrillItem.MAX_RANGE, partialTick, false);
+            double range = LaserDrillItem.miningRange(player);
+            HitResult hit = player.pick(range, partialTick, false);
             Vec3 end = hit.getType() == HitResult.Type.MISS
-                    ? eye.add(direction.scale(LaserDrillItem.MAX_RANGE))
+                    ? eye.add(direction.scale(range))
                     : hit.getLocation();
 
             if (start.distanceToSqr(end) < 0.03) {

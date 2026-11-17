@@ -27,7 +27,6 @@ public final class LaserDrillItem extends Item {
     public static final int MAX_ENERGY = 16000;
     public static final int MAX_RECEIVE = 1000;
     public static final int ENERGY_PER_CRYSTAL = 400;
-    public static final double MAX_RANGE = 5.0;
     private static final int TICKS_TO_MINE = 25;
     private static final Map<ServerPlayer, MiningProgress> PROGRESS = new WeakHashMap<>();
 
@@ -37,6 +36,10 @@ public final class LaserDrillItem extends Item {
 
     public static int storedEnergy(ItemStack stack) {
         return stack.getOrDefault(LunarCrystalRegistry.LASER_DRILL_ENERGY.get(), 0);
+    }
+
+    public static double miningRange(Player player) {
+        return player.blockInteractionRange();
     }
 
     public static boolean canMine(ItemStack stack) {
@@ -76,7 +79,7 @@ public final class LaserDrillItem extends Item {
             return;
         }
 
-        HitResult hit = player.pick(MAX_RANGE, 1.0f, false);
+        HitResult hit = player.pick(miningRange(player), 1.0f, false);
         if (!(hit instanceof BlockHitResult blockHit) || hit.getType() != HitResult.Type.BLOCK) {
             resetProgress(player);
             return;
