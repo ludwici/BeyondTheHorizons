@@ -3,6 +3,7 @@ package dev.ludwici.beyondthehorizons.neoforge.worldgen;
 import com.mojang.serialization.Codec;
 import dev.ludwici.beyondthehorizons.neoforge.venus.VenusAnhydriteRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -12,10 +13,14 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class VenusAnhydriteFeature extends Feature<NoneFeatureConfiguration> {
 
     private static final TagKey<Block> HOSTS = TagKey.create(Registries.BLOCK,
             ResourceLocation.fromNamespaceAndPath("beyond_the_horizons", "anhydrite_crust_hosts"));
+    private static final Direction[] DIRECTIONS = Direction.values();
 
     public VenusAnhydriteFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -26,59 +31,62 @@ public final class VenusAnhydriteFeature extends Feature<NoneFeatureConfiguratio
         var level = context.level();
         var random = context.random();
         BlockPos origin = context.origin();
-        int centerX = origin.getX();
-        int centerZ = origin.getZ();
-        int surfaceY = level.getHeight(Heightmap.Types.WORLD_SURFACE_WG, centerX, centerZ) - 1;
-        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
-        int exposedRockY = Integer.MIN_VALUE;
+        int x = origin.getX();
+        int z = origin.getZ();
+        int surfaceY = level.getHeight(Heightmap.Types.WORLD_SURFACE_WG, x, z) - 1;
+        BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();
+        int firstRockY = Integer.MIN_VALUE;
 
-        for (int depth = 0; depth <= 11; depth++) {
+        for (int depth = 0; depth <= 14; depth++) {
             int y = surfaceY - depth;
             if (y <= level.getMinBuildHeight() + 4) {
                 break;
             }
 
-            pos.set(centerX, y, centerZ);
-            if (level.getBlockState(pos).is(HOSTS)) {
-                exposedRockY = y;
+            cursor.set(x, y, z);
+            if (level.getBlockState(cursor).is(HOSTS)) {
+                firstRockY = y;
                 break;
             }
         }
 
-        if (exposedRockY == Integer.MIN_VALUE) {
+        if (firstRockY == Integer.MIN_VALUE) {
             return false;
         }
 
-        int radiusX = 2 + random.nextInt(2);
-        int radiusZ = 2 + random.nextInt(2);
-        int radiusY = 1 + random.nextInt(2);
-        int centerY = exposedRockY - random.nextInt(2);
-        int placed = 0;
-
-        for (int dx = -radiusX; dx <= radiusX; dx++) {
-            for (int dz = -radiusZ; dz <= radiusZ; dz++) {
-                for (int dy = -radiusY; dy <= radiusY; dy++) {
-                    double distance = (double) (dx * dx) / (radiusX * radiusX)
-                            + (double) (dy * dy) / (radiusY * radiusY)
-                            + (double) (dz * dz) / (radiusZ * radiusZ);
-                    if (distance > 1.0 || random.nextFloat() < 0.22f) {
-                        continue;
-                    }
-
-                    int y = centerY + dy;
-                    if (y <= level.getMinBuildHeight() + 4 || y >= level.getMaxBuildHeight() - 4) {
-                        continue;
-                    }
-
-                    pos.set(centerX + dx, y, centerZ + dz);
-                    if (level.getBlockState(pos).is(HOSTS)) {
-                        level.setBlock(pos, VenusAnhydriteRegistry.ANHYDRITE_CRUST.get().defaultBlockState(), 2);
-                        placed++;
-                    }
-                }
-            }
+        int centerY = firstRockY - (2 + random.nextInt(4));
+        cursor.set(x, centerY, z);
+        if (!level.getBlockState(cursor).is(HOSTS)) {
+            return false;
         }
 
-        return placed > 0;
+        BlockPos center = cursor.immutable();
+        List<BlockPos> placed = new ArrayList<>();
+        level.setBlock(center, VenusAnhydriteRegistry.ANHYDRITE_CRUST.get().defaultBlockState(), 2);
+        placed.add(center);
+
+        int desired = 3 + random.nextInt(4);
+        for (int attempt = 0; attempt < desired * 10 && placed.size() < desired; attempt++) {
+            BlockPos parent = placed.get(random.nextInt(placed.size()));
+            Direction direction = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
+            BlockPos candidate = parent.relative(direction);
+
+            if (Math.abs(candidate.getX() - x) > 2
+                    || Math.abs(candidate.getZ() - z) > 2
+                    || Math.abs(candidate.getY() - centerY) > 1
+                    || candidate.getY() <= level.getMinBuildHeight() + 4
+                    || candidate.getY() >= level.getMaxBuildHeight() - 4) {
+                continue;
+            }
+
+            if (!level.getBlockState(candidate).is(HOSTS)) {
+                continue;
+            }
+
+            level.setBlock(candidate, VenusAnhydriteRegistry.ANHYDRITE_CRUST.get().defaultBlockState(), 2);
+            placed.add(candidate);
+        }
+
+        return !placed.isEmpty();
     }
 }
