@@ -5,5 +5,13 @@
   "biome.beyond_the_horizons.cobalt_plains": "Кобальтовые равнины",
   "biome.beyond_the_horizons.methane_drifts": "Метановые наносы",
   "biome.beyond_the_horizons.neptunian_ocean": "Нептунианский океан",
-  "biome.beyond_the_horizons.pressure_abyss": "Бездна высокого давления"
+  "biome.beyond_the_horizons.pressure_abyss": "Бездна высокого давления",
+  "attribute.name.beyond_the_horizons.pressure_resistance": "Устойчивость к давлению (бар)",
+  "message.beyond_the_horizons.pressure_warning": "Опасное давление: %s бар | Защита: %s бар",
+  "message.beyond_the_horizons.environment_abyss": "Бездна высокого давления",
+  "message.beyond_the_horizons.environment_safe": "Безопасная зона",
+  "message.beyond_the_horizons.environment_debug": "Давление: %s бар | Защита: %s бар | Темп.: %s °C | Ветер: %s | Радиация: %s | %s",
+  "message.beyond_the_horizons.debug_enabled": "Диагностика среды включена",
+  "message.beyond_the_horizons.debug_disabled": "Диагностика среды выключена",
+  "death.attack.beyond_the_horizons.pressure": "%1$s погиб от чудовищного давления"
 }

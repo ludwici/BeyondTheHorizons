@@ -5,5 +5,13 @@
   "biome.beyond_the_horizons.cobalt_plains": "Cobalt Plains",
   "biome.beyond_the_horizons.methane_drifts": "Methane Drifts",
   "biome.beyond_the_horizons.neptunian_ocean": "Neptunian Ocean",
-  "biome.beyond_the_horizons.pressure_abyss": "Pressure Abyss"
+  "biome.beyond_the_horizons.pressure_abyss": "Pressure Abyss",
+  "attribute.name.beyond_the_horizons.pressure_resistance": "Pressure Resistance (bar)",
+  "message.beyond_the_horizons.pressure_warning": "Dangerous pressure: %s bar | Protection: %s bar",
+  "message.beyond_the_horizons.environment_abyss": "Pressure Abyss",
+  "message.beyond_the_horizons.environment_safe": "Safe zone",
+  "message.beyond_the_horizons.environment_debug": "Pressure: %s bar | Resist: %s bar | Temp: %s C | Wind: %s | Radiation: %s | %s",
+  "message.beyond_the_horizons.debug_enabled": "Environment diagnostics enabled",
+  "message.beyond_the_horizons.debug_disabled": "Environment diagnostics disabled",
+  "death.attack.beyond_the_horizons.pressure": "%1$s was crushed by the immense pressure"
 }

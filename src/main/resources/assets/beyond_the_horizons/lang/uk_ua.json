@@ -5,5 +5,13 @@
   "biome.beyond_the_horizons.cobalt_plains": "Кобальтові рівнини",
   "biome.beyond_the_horizons.methane_drifts": "Метанові наноси",
   "biome.beyond_the_horizons.neptunian_ocean": "Нептуніанський океан",
-  "biome.beyond_the_horizons.pressure_abyss": "Безодня високого тиску"
+  "biome.beyond_the_horizons.pressure_abyss": "Безодня високого тиску",
+  "attribute.name.beyond_the_horizons.pressure_resistance": "Стійкість до тиску (бар)",
+  "message.beyond_the_horizons.pressure_warning": "Небезпечний тиск: %s бар | Захист: %s бар",
+  "message.beyond_the_horizons.environment_abyss": "Безодня високого тиску",
+  "message.beyond_the_horizons.environment_safe": "Безпечна зона",
+  "message.beyond_the_horizons.environment_debug": "Тиск: %s бар | Захист: %s бар | Темп.: %s °C | Вітер: %s | Радіація: %s | %s",
+  "message.beyond_the_horizons.debug_enabled": "Діагностику середовища ввімкнено",
+  "message.beyond_the_horizons.debug_disabled": "Діагностику середовища вимкнено",
+  "death.attack.beyond_the_horizons.pressure": "%1$s загинув від надзвичайного тиску"
 }
