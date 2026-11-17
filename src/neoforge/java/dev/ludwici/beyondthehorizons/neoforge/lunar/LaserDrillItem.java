@@ -71,42 +71,45 @@ public final class LaserDrillItem extends Item {
         }
 
         if (!player.getMainHandItem().is(LunarCrystalRegistry.LASER_DRILL.get()) || !canMine(stack)) {
-            PROGRESS.remove(player);
+            resetProgress(player);
             player.stopUsingItem();
             return;
         }
 
         HitResult hit = player.pick(MAX_RANGE, 1.0f, false);
         if (!(hit instanceof BlockHitResult blockHit) || hit.getType() != HitResult.Type.BLOCK) {
-            PROGRESS.remove(player);
+            resetProgress(player);
             return;
         }
 
         BlockPos pos = blockHit.getBlockPos();
         if (!isLunarCrystal(level.getBlockState(pos))) {
-            PROGRESS.remove(player);
+            resetProgress(player);
             return;
         }
 
         MiningProgress progress = PROGRESS.get(player);
         if (progress == null || !progress.target.equals(pos)) {
+            resetProgress(player);
             progress = new MiningProgress(pos);
             PROGRESS.put(player, progress);
         }
 
         progress.ticks++;
         if (progress.ticks < TICKS_TO_MINE) {
+            int crackStage = Math.min(9, progress.ticks * 10 / TICKS_TO_MINE);
+            level.destroyBlockProgress(player.getId(), pos, crackStage);
             return;
         }
 
-        PROGRESS.remove(player);
+        resetProgress(player);
         player.gameMode.destroyBlock(pos);
     }
 
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeCharged) {
         if (!level.isClientSide() && user instanceof ServerPlayer player) {
-            PROGRESS.remove(player);
+            resetProgress(player);
         }
     }
 
@@ -117,6 +120,13 @@ public final class LaserDrillItem extends Item {
         }
 
         return true;
+    }
+
+    private static void resetProgress(ServerPlayer player) {
+        MiningProgress progress = PROGRESS.remove(player);
+        if (progress != null) {
+            player.serverLevel().destroyBlockProgress(player.getId(), progress.target, -1);
+        }
     }
 
     private static boolean isLunarCrystal(BlockState state) {

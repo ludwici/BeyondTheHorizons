@@ -16,14 +16,6 @@
                 "max": 4
               }
             }
-          ],
-          "conditions": [
-            {
-              "condition": "minecraft:match_tool",
-              "predicate": {
-                "items": "beyond_the_horizons:laser_drill"
-              }
-            }
           ]
         }
       ]

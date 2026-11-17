@@ -14,6 +14,11 @@ public final class LunarCrystalClusterBlock extends AmethystClusterBlock {
     }
 
     @Override
+    public boolean canHarvestBlock(BlockState state, BlockGetter level, BlockPos pos, Player player) {
+        return player.getMainHandItem().is(LunarCrystalRegistry.LASER_DRILL.get());
+    }
+
+    @Override
     protected float getDestroyProgress(BlockState state, Player player, BlockGetter level, BlockPos pos) {
         if (player.isCreative()) {
             return super.getDestroyProgress(state, player, level, pos);
