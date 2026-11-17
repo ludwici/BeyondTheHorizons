@@ -2,6 +2,10 @@
 
 Ad Astra: Beyond The Horizons is a work-in-progress add-on for [Ad Astra](https://github.com/terrarium-earth/Ad-Astra). The first explorable planet is Neptune, with a floating ice shell and a deep subsurface ocean.
 
+## Development roadmap
+
+See [ROADMAP.md](ROADMAP.md) for current status, gameplay milestones, methane industry, atmospheric platforms, probes, Neptune pressure hazards, gas giants and interstellar navigation. Detailed design notes live in [`docs/planning/`](docs/planning/).
+
 ## Supported versions
 
 | Component | Version |
