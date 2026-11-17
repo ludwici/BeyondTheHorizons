@@ -58,7 +58,7 @@
   "item.beyond_the_horizons.electromagnetic_core": "Электромагнитный сердечник",
   "item.beyond_the_horizons.precision_servo": "Прецизионный сервопривод",
   "item.beyond_the_horizons.stabilization_module": "Стабилизирующий модуль",
-  "block.beyond_the_horizons.anhydrite_crust": "Ангидритовая корка",
+  "block.beyond_the_horizons.anhydrite_crust": "Ангидритовая порода Венеры",
   "item.beyond_the_horizons.raw_anhydrite": "Сырой ангидрит",
   "screen.beyond_the_horizons.target": "Цель: %s °C",
   "screen.beyond_the_horizons.actual": "Текущая: %s °C",

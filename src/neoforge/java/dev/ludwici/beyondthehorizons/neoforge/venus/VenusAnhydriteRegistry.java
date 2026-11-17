@@ -20,8 +20,7 @@ public final class VenusAnhydriteRegistry {
 
     public static final DeferredBlock<AnhydriteCrustBlock> ANHYDRITE_CRUST =
             BLOCKS.register("anhydrite_crust", () -> new AnhydriteCrustBlock(
-                    BlockBehaviour.Properties.of().strength(3.0f).noCollission()
-                            .noOcclusion().sound(SoundType.CALCITE)));
+                    BlockBehaviour.Properties.of().strength(3.0f).sound(SoundType.CALCITE)));
 
     public static final DeferredHolder<Item, Item> ANHYDRITE_CRUST_ITEM =
             ITEMS.register("anhydrite_crust", () -> new BlockItem(ANHYDRITE_CRUST.get(), new Item.Properties()));
