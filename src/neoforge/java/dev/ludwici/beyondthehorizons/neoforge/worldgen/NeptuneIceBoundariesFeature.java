@@ -27,6 +27,12 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
     private static final BlockState BLUE_ICE = Blocks.BLUE_ICE.defaultBlockState();
     private static final BlockState PACKED_ICE = Blocks.PACKED_ICE.defaultBlockState();
     private static final BlockState AIR = Blocks.AIR.defaultBlockState();
+    private static final BlockState SNOW = Blocks.SNOW_BLOCK.defaultBlockState();
+    private static final BlockState POWDER_SNOW = Blocks.POWDER_SNOW.defaultBlockState();
+    private static final BlockState DEEPSLATE = Blocks.DEEPSLATE.defaultBlockState();
+    private static final BlockState BASALT = Blocks.BASALT.defaultBlockState();
+    private static final BlockState TUFF = Blocks.TUFF.defaultBlockState();
+    private static final BlockState AMETHYST = Blocks.AMETHYST_BLOCK.defaultBlockState();
 
     public NeptuneIceBoundariesFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);
@@ -44,6 +50,8 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
 
             for (int dz = 0; dz < 16; dz++) {
                 int z = origin.getZ() + dz;
+                boolean methaneDrifts = NeptuneBiomeSource.isMethaneDrift(x, z);
+                boolean pressureAbyss = NeptuneBiomeSource.isPressureAbyss(x, z);
 
                 double lowerNoise = terrainNoise(seed, x, z, LOWER_BOUNDARY_SALT);
                 int waterIceBoundary = WATER_ICE_BASE_Y + (int) Math.round(lowerNoise * WATER_ICE_VARIATION);
@@ -97,6 +105,53 @@ public final class NeptuneIceBoundariesFeature extends Feature<NoneFeatureConfig
                     BlockState target = y <= surfaceY ? PACKED_ICE : AIR;
                     if (current != target) {
                         level.setBlock(pos, target, 2);
+                    }
+                }
+
+                if (methaneDrifts) {
+                    double snowNoise = terrainNoise(seed, x, z, 0x534E4F5744524946L);
+                    int snowDepth = 1 + Math.round((float) Math.max(0, snowNoise * 3.0 + 1.0));
+
+                    for (int y = surfaceY - snowDepth + 1; y <= surfaceY; y++) {
+                        pos.set(x, y, z);
+                        if (level.getBlockState(pos).is(Blocks.PACKED_ICE)) {
+                            level.setBlock(pos, SNOW, 2);
+                        }
+                    }
+
+                    if (snowDepth >= 3 && snowNoise > 0.65) {
+                        pos.set(x, surfaceY, z);
+                        if (level.getBlockState(pos).is(Blocks.SNOW_BLOCK)) {
+                            level.setBlock(pos, POWDER_SNOW, 2);
+                        }
+                    }
+                } else {
+                    double iceVeinNoise = terrainNoise(seed, x, z, 0x4943455645494E53L);
+                    if (iceVeinNoise > 0.64) {
+                        pos.set(x, surfaceY, z);
+                        if (level.getBlockState(pos).is(Blocks.PACKED_ICE)) {
+                            level.setBlock(pos, BLUE_ICE, 2);
+                        }
+                    }
+                }
+
+                if (pressureAbyss) {
+                    double floorNoise = terrainNoise(seed, x, z, 0x4142595353464C52L);
+                    int floorHeight = Math.clamp(3 + Math.round((float) (floorNoise * 3)), 1, 6);
+                    BlockState floorBlock = floorNoise > 0.3 ? BASALT : floorNoise < -0.35 ? TUFF : DEEPSLATE;
+
+                    for (int y = -59; y < -59 + floorHeight; y++) {
+                        pos.set(x, y, z);
+                        if (level.getBlockState(pos).is(Blocks.WATER)) {
+                            level.setBlock(pos, floorBlock, 2);
+                        }
+                    }
+
+                    if (floorNoise > 0.7) {
+                        pos.set(x, -59 + floorHeight - 1, z);
+                        if (level.getBlockState(pos).is(Blocks.BASALT)) {
+                            level.setBlock(pos, AMETHYST, 2);
+                        }
                     }
                 }
             }
