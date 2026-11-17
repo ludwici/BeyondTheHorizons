@@ -68,6 +68,14 @@ Pressure Abyss has a stronger blue-black underwater fog and shorter visibility o
 
 See [diving-suit test plan](docs/planning/expedition-diving-suit.md).
 
+### SpaceY Workbench — modular probe assembly (NeoForge)
+
+The standalone **SpaceY Workbench** is crafted with steel plates, Ostrum plates, Desh cables, a comparator and an ordinary crafting table. NASA Workbench remains dedicated to rockets; SpaceY recipes do not reference it.
+
+SpaceY Workbench has six component positions: hull, propulsion (water or atmosphere), battery, antenna, optional pressure shell and sample collector. It assembles a **Modular Probe** item with saved module configuration in item custom data (including environment and preliminary pressure rating). The workbench inventory persists in NBT and drops its stored components when broken.
+
+The component and block icons currently reuse existing Minecraft and Ad Astra textures; original textures are still pending. **Physical probe launch, navigation and resource collection are not implemented yet.** See [probe design and implementation status](docs/planning/probe-modules-and-progression.md).
+
 ## GitHub Actions
 
 Open **Actions → Build NeoForge JAR → Run workflow** to build on demand. Builds run on pushes to `main` and pull requests. GitHub Actions builds **NeoForge only**; Fabric sources are kept for future work. Download the NeoForge JAR from **Artifacts** (retention **1 day**). Nothing is automatically published to CurseForge or Modrinth.

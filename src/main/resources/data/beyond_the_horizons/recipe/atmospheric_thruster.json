@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " R ",
+    "FIF",
+    " S "
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "F": {
+      "item": "ad_astra:rocket_fin"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:atmospheric_thruster"
+  }
+}

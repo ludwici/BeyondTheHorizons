@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "OTO",
+    "DCD",
+    "SSS"
+  ],
+  "key": {
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    },
+    "T": {
+      "item": "minecraft:comparator"
+    },
+    "D": {
+      "item": "ad_astra:desh_cable"
+    },
+    "C": {
+      "item": "minecraft:crafting_table"
+    },
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:spacey_workbench"
+  }
+}

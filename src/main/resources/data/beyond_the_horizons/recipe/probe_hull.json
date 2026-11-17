@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "SOS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "O": {
+      "tag": "ad_astra:ostrum_ingots"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:probe_hull"
+  }
+}

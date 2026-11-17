@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "OCO",
+    "S S",
+    "OCO"
+  ],
+  "key": {
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    },
+    "C": {
+      "tag": "ad_astra:calorite_plates"
+    },
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:pressure_shell"
+  }
+}

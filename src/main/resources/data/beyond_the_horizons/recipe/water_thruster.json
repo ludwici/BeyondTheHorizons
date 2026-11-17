@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " S ",
+    "FSF",
+    " I "
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "F": {
+      "item": "ad_astra:fan"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:water_thruster"
+  }
+}

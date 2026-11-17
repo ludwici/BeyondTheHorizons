@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " D ",
+    "CEC",
+    " D "
+  ],
+  "key": {
+    "D": {
+      "tag": "ad_astra:desh_plates"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "E": {
+      "item": "ad_astra:etrionic_capacitor"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:probe_battery"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SGS",
+    "ITI",
+    "SGS"
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "I": {
+      "item": "ad_astra:iron_rod"
+    },
+    "T": {
+      "item": "ad_astra:gas_tank"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:sample_collector"
+  }
+}
