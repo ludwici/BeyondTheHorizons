@@ -51,7 +51,7 @@ The distributable NeoForge JAR is `build/libs/BeyondTheHorizons-neoforge-1.21.1-
 
 ## Neptune environmental pressure (NeoForge)
 
-Pressure Abyss now has a server-side pressure hazard. Underwater pressure increases with depth; unprotected players receive a warning and begin taking armor-bypassing pressure damage after about three seconds. This feature is implemented only on NeoForge and only in submerged parts of Neptune's `pressure_abyss` biome. It does not change Ad Astra oxygen mechanics.
+Pressure Abyss now has a server-side pressure hazard. Underwater pressure increases with depth; unprotected players receive a warning and begin taking armor-bypassing pressure damage after about three seconds. This feature is implemented only on NeoForge and only within Neptune's deep `pressure_abyss` biome, where unpressurized air pockets are not automatically safe. It does not change Ad Astra oxygen mechanics.
 
 The new `beyond_the_horizons:pressure_resistance` attribute (default **4.5 bar**) is intended for upcoming diving suits and sealed vehicles. These items are **not yet implemented**; operators can temporarily test protection using `/attribute @s beyond_the_horizons:pressure_resistance base set 30`, then reset to `4.5`.
 

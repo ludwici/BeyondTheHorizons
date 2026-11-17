@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
@@ -30,11 +29,8 @@ public final class NeptuneEnvironment {
     }
 
     public static EnvironmentSnapshot sample(ServerLevel level, BlockPos pos, short temperature) {
-        boolean submerged = level.getFluidState(pos).is(FluidTags.WATER);
-        double pressure = submerged
-                ? 1.0 + Math.max(0, NOMINAL_OCEAN_SURFACE_Y - pos.getY()) * BARS_PER_BLOCK
-                : 1.0;
-        boolean abyss = submerged && pos.getY() < ABYSS_START_Y && level.getBiome(pos).is(PRESSURE_ABYSS);
+        double pressure = 1.0 + Math.max(0, NOMINAL_OCEAN_SURFACE_Y - pos.getY()) * BARS_PER_BLOCK;
+        boolean abyss = pos.getY() < ABYSS_START_Y && level.getBiome(pos).is(PRESSURE_ABYSS);
 
         return new EnvironmentSnapshot(pressure, temperature, 0.0, 0.0, abyss);
     }
