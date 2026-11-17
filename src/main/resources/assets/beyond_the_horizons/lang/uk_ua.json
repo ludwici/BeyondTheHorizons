@@ -49,5 +49,7 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Скупчення місячних кристалів",
   "item.beyond_the_horizons.laser_drill": "Лазерний бур",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Енергія: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Утримуйте ПКМ для лазерного променя. Місячні кристали руйнуються під час тривалого наведення."
+  "tooltip.beyond_the_horizons.laser_drill_function": "Утримуйте ПКМ для лазерного променя. Місячні кристали руйнуються під час тривалого наведення.",
+  "item.beyond_the_horizons.polished_lunar_crystal": "Оброблений місячний кристал",
+  "item.beyond_the_horizons.precision_optical_lens": "Прецизійна оптична лінза"
 }

@@ -47,6 +47,12 @@ public final class LunarCrystalRegistry {
     public static final DeferredHolder<Item, Item> LUNAR_CRYSTAL =
             ITEMS.register("lunar_crystal", () -> new Item(new Item.Properties()));
 
+    public static final DeferredHolder<Item, Item> POLISHED_LUNAR_CRYSTAL =
+            ITEMS.register("polished_lunar_crystal", () -> new Item(new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> PRECISION_OPTICAL_LENS =
+            ITEMS.register("precision_optical_lens", () -> new Item(new Item.Properties()));
+
     public static final DeferredHolder<Item, LaserDrillItem> LASER_DRILL =
             ITEMS.register("laser_drill", () -> new LaserDrillItem(
                     new Item.Properties().stacksTo(1).component(LASER_DRILL_ENERGY.get(), LaserDrillItem.MAX_ENERGY)));

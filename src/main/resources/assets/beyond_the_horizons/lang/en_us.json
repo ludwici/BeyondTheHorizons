@@ -49,5 +49,7 @@
   "block.beyond_the_horizons.lunar_crystal_cluster": "Lunar Crystal Cluster",
   "item.beyond_the_horizons.laser_drill": "Laser Drill",
   "tooltip.beyond_the_horizons.laser_drill_energy": "Energy: %s / %s FE",
-  "tooltip.beyond_the_horizons.laser_drill_function": "Hold RMB to fire a laser beam; lunar crystals break after sustained aiming."
+  "tooltip.beyond_the_horizons.laser_drill_function": "Hold RMB to fire a laser beam; lunar crystals break after sustained aiming.",
+  "item.beyond_the_horizons.polished_lunar_crystal": "Polished Lunar Crystal",
+  "item.beyond_the_horizons.precision_optical_lens": "Precision Optical Lens"
 }

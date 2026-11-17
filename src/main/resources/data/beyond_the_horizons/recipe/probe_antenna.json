@@ -2,14 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "pattern": [
-    " R ",
+    " L ",
     " I ",
     "DCD"
   ],
   "key": {
-    "R": {
-      "item": "minecraft:redstone_torch"
-    },
     "I": {
       "item": "ad_astra:iron_rod"
     },
@@ -18,6 +15,9 @@
     },
     "C": {
       "item": "minecraft:copper_ingot"
+    },
+    "L": {
+      "item": "beyond_the_horizons:precision_optical_lens"
     }
   },
   "result": {

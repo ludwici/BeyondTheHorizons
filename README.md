@@ -76,6 +76,16 @@ SpaceY Workbench has six component positions: hull, propulsion (water or atmosph
 
 The component and block icons currently reuse existing Minecraft and Ad Astra textures; original textures are still pending. **Physical probe launch, navigation and resource collection are not implemented yet.** See [probe design and implementation status](docs/planning/probe-modules-and-progression.md).
 
+### Lunar crystal optics — first return-to-Moon progression
+
+The laser drill extracts lunar crystals from rare Moon geodes. The first industrial processing chain reuses **Ad Astra's Compressor** rather than introducing another machine:
+
+1. Compress one `lunar_crystal` into one `polished_lunar_crystal` (`ad_astra:compressing`, 120 ticks, recipe energy 20).
+2. Craft a `precision_optical_lens` from the polished crystal, three glass panes, and one Desh plate.
+3. Install the lens in the `probe_antenna` crafting recipe; the optical component replaces the former redstone torch.
+
+Both items are registered for NeoForge 1.21.1 with their own textures, models and translations. The **SpaceY Workbench recipe is intentionally unchanged** while later planet materials remain under design. These processing and assembly steps require in-game verification.
+
 ## GitHub Actions
 
 Open **Actions → Build NeoForge JAR → Run workflow** to build on demand. Builds run on pushes to `main` and pull requests. GitHub Actions builds **NeoForge only**; Fabric sources are kept for future work. Download the NeoForge JAR from **Artifacts** (retention **1 day**). Nothing is automatically published to CurseForge or Modrinth.
