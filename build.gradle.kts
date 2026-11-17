@@ -65,7 +65,7 @@ cloche {
 
     neoforge {
         loaderVersion = neoforgeVersion
-        mixins.from(file("src/neoforge/resources/beyond_the_horizons.mixins.json"))
+        mixins.from(file("src/neoforge/mixins/beyond_the_horizons.mixins.json"))
 
         dependencies {
             modImplementation("maven.modrinth:3ufwT9JF:9pnKHdCG")
