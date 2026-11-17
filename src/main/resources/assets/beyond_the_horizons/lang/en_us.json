@@ -53,5 +53,9 @@
   "item.beyond_the_horizons.polished_lunar_crystal": "Polished Lunar Crystal",
   "item.beyond_the_horizons.precision_optical_lens": "Precision Optical Lens",
   "block.beyond_the_horizons.hematite_stratum": "Hematite Stratum",
-  "item.beyond_the_horizons.raw_hematite": "Raw Hematite"
+  "item.beyond_the_horizons.raw_hematite": "Raw Hematite",
+  "item.beyond_the_horizons.ferrite_core": "Ferrite Core",
+  "item.beyond_the_horizons.electromagnetic_core": "Electromagnetic Core",
+  "item.beyond_the_horizons.precision_servo": "Precision Servo",
+  "item.beyond_the_horizons.stabilization_module": "Stabilization Module"
 }

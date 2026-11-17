@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " L ",
+    "OEO",
+    " R "
+  ],
+  "key": {
+    "L": {
+      "item": "beyond_the_horizons:precision_optical_lens"
+    },
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    },
+    "E": {
+      "item": "beyond_the_horizons:electromagnetic_core"
+    },
+    "R": {
+      "item": "minecraft:comparator"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:stabilization_module"
+  }
+}

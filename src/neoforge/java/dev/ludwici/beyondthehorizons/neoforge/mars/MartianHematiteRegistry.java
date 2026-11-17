@@ -27,6 +27,18 @@ public final class MartianHematiteRegistry {
     public static final DeferredHolder<Item, Item> RAW_HEMATITE =
             ITEMS.register("raw_hematite", () -> new Item(new Item.Properties()));
 
+    public static final DeferredHolder<Item, Item> FERRITE_CORE =
+            ITEMS.register("ferrite_core", () -> new Item(new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> ELECTROMAGNETIC_CORE =
+            ITEMS.register("electromagnetic_core", () -> new Item(new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> PRECISION_SERVO =
+            ITEMS.register("precision_servo", () -> new Item(new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> STABILIZATION_MODULE =
+            ITEMS.register("stabilization_module", () -> new Item(new Item.Properties()));
+
     private MartianHematiteRegistry() {
     }
 

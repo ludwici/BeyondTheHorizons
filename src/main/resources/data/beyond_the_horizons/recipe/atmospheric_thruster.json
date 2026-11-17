@@ -3,7 +3,7 @@
   "category": "equipment",
   "pattern": [
     " R ",
-    "FIF",
+    "FPF",
     " S "
   ],
   "key": {
@@ -13,11 +13,11 @@
     "F": {
       "item": "ad_astra:rocket_fin"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
-    },
     "S": {
       "tag": "ad_astra:steel_plates"
+    },
+    "P": {
+      "item": "beyond_the_horizons:precision_servo"
     }
   },
   "result": {

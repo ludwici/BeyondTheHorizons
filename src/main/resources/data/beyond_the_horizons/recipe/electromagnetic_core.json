@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " C ",
+    "RFR",
+    " O "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "F": {
+      "item": "beyond_the_horizons:ferrite_core"
+    },
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:electromagnetic_core"
+  }
+}

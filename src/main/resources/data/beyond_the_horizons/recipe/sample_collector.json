@@ -4,7 +4,7 @@
   "pattern": [
     "SGS",
     "ITI",
-    "SGS"
+    "SMS"
   ],
   "key": {
     "S": {
@@ -18,6 +18,9 @@
     },
     "T": {
       "item": "ad_astra:gas_tank"
+    },
+    "M": {
+      "item": "beyond_the_horizons:stabilization_module"
     }
   },
   "result": {

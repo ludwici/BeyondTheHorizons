@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " O ",
+    "RER",
+    " S "
+  ],
+  "key": {
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    },
+    "R": {
+      "item": "ad_astra:iron_rod"
+    },
+    "E": {
+      "item": "beyond_the_horizons:electromagnetic_core"
+    },
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:precision_servo"
+  }
+}

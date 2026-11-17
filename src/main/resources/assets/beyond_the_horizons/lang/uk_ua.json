@@ -53,5 +53,9 @@
   "item.beyond_the_horizons.polished_lunar_crystal": "Оброблений місячний кристал",
   "item.beyond_the_horizons.precision_optical_lens": "Прецизійна оптична лінза",
   "block.beyond_the_horizons.hematite_stratum": "Гематитовий пласт",
-  "item.beyond_the_horizons.raw_hematite": "Сирий гематит"
+  "item.beyond_the_horizons.raw_hematite": "Сирий гематит",
+  "item.beyond_the_horizons.ferrite_core": "Феритовий сердечник",
+  "item.beyond_the_horizons.electromagnetic_core": "Електромагнітний сердечник",
+  "item.beyond_the_horizons.precision_servo": "Прецизійний сервопривід",
+  "item.beyond_the_horizons.stabilization_module": "Стабілізувальний модуль"
 }

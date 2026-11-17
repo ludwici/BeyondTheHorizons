@@ -1,0 +1,17 @@
+{
+  "type": "ad_astra:alloying",
+  "cookingtime": 160,
+  "energy": 20,
+  "ingredients": [
+    {
+      "item": "beyond_the_horizons:raw_hematite"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:ferrite_core"
+  }
+}

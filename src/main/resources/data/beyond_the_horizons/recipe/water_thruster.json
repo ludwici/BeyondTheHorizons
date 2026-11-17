@@ -4,7 +4,7 @@
   "pattern": [
     " S ",
     "FSF",
-    " I "
+    " P "
   ],
   "key": {
     "S": {
@@ -13,8 +13,8 @@
     "F": {
       "item": "ad_astra:fan"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
+    "P": {
+      "item": "beyond_the_horizons:precision_servo"
     }
   },
   "result": {
