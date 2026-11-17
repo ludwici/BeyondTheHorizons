@@ -49,6 +49,17 @@ To build NeoForge only locally, run `./gradlew neoforgeIncludeJar` (Windows: `.\
 
 The distributable NeoForge JAR is `build/libs/BeyondTheHorizons-neoforge-1.21.1-0.1.0.jar`. The mod display name is `Ad Astra: Beyond The Horizons`, while the JAR filename uses only `BeyondTheHorizons`.
 
+## Neptune environmental pressure (NeoForge)
+
+Pressure Abyss now has a server-side pressure hazard. Underwater pressure increases with depth; unprotected players receive a warning and begin taking armor-bypassing pressure damage after about three seconds. This feature is implemented only on NeoForge and only in submerged parts of Neptune's `pressure_abyss` biome. It does not change Ad Astra oxygen mechanics.
+
+The new `beyond_the_horizons:pressure_resistance` attribute (default **4.5 bar**) is intended for upcoming diving suits and sealed vehicles. These items are **not yet implemented**; operators can temporarily test protection using `/attribute @s beyond_the_horizons:pressure_resistance base set 30`, then reset to `4.5`.
+
+- `/bth environment debug` — toggle on-screen environmental diagnostics (operator command).
+- `/bth environment inspect` — print current pressure, protection and other fields (operator command).
+
+See [test instructions](docs/planning/environment-pressure-implementation.md). Wind and radiation are currently informational placeholders, not active damage systems.
+
 ## GitHub Actions
 
 Open **Actions → Build NeoForge JAR → Run workflow** to build on demand. Builds run on pushes to `main` and pull requests. GitHub Actions builds **NeoForge only**; Fabric sources are kept for future work. Download the NeoForge JAR from **Artifacts** (retention **1 day**). Nothing is automatically published to CurseForge or Modrinth.

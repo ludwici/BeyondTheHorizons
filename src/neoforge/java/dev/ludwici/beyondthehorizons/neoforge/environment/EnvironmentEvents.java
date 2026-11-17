@@ -41,12 +41,16 @@ public final class EnvironmentEvents {
             return;
         }
 
+        UUID playerId = player.getUUID();
+        if (!EnvironmentSampler.hasProvider(player.level().dimension()) && !DEBUG_PLAYERS.contains(playerId)) {
+            EXPOSURE_TICKS.remove(playerId);
+            return;
+        }
+
         EnvironmentSnapshot environment = EnvironmentSampler.sample(player.serverLevel(), player.blockPosition());
         double resistance = PressureProtection.resistanceBar(player);
         boolean overPressure = environment.hazardousPressure() && environment.pressureBar() > resistance;
         boolean vulnerable = !player.isCreative() && !player.isSpectator();
-        UUID playerId = player.getUUID();
-
         if (overPressure && vulnerable) {
             int exposure = EXPOSURE_TICKS.merge(playerId, SAMPLE_INTERVAL, Integer::sum);
             if (exposure >= DAMAGE_GRACE_TICKS && exposure % DAMAGE_INTERVAL == 0) {

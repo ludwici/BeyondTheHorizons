@@ -29,6 +29,10 @@ public final class EnvironmentSampler {
         PROVIDERS.put(dimension, provider);
     }
 
+    public static boolean hasProvider(ResourceKey<Level> dimension) {
+        return PROVIDERS.containsKey(dimension);
+    }
+
     public static EnvironmentSnapshot sample(ServerLevel level, BlockPos pos) {
         short temperature = TemperatureApi.API.getTemperature(level, pos);
         Provider provider = PROVIDERS.get(level.dimension());
