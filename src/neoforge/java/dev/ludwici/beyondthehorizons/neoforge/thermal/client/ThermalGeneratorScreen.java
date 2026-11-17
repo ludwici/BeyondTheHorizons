@@ -24,6 +24,8 @@ public final class ThermalGeneratorScreen extends AbstractContainerScreen<Therma
 
     private TemperatureSlider slider;
     private EditBox exactTemperature;
+    private ThermalGeneratorBlock.Mode sliderMode;
+    private boolean receivedInitialState;
 
     public ThermalGeneratorScreen(ThermalGeneratorMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -45,6 +47,8 @@ public final class ThermalGeneratorScreen extends AbstractContainerScreen<Therma
         super.init();
         int min = menu.mode().min();
         int max = menu.mode().max();
+        sliderMode = menu.mode();
+        receivedInitialState = false;
         slider = addRenderableWidget(new TemperatureSlider(leftPos + 9, topPos + 40, 158, 16,
                 min, max, menu.targetTemperature(), this::sendTarget));
 
@@ -66,6 +70,27 @@ public final class ThermalGeneratorScreen extends AbstractContainerScreen<Therma
                         exactTemperature.setValue(Integer.toString(menu.targetTemperature()));
                     }
                 }).bounds(leftPos + 90, topPos + 69, 77, 20).build());
+    }
+
+    @Override
+    protected void containerTick() {
+        super.containerTick();
+        if (slider == null || exactTemperature == null) {
+            return;
+        }
+
+        boolean stateAvailable = menu.targetTemperature() != 0
+                || menu.mode() == ThermalGeneratorBlock.Mode.COOL;
+        if (!receivedInitialState && stateAvailable) {
+            receivedInitialState = true;
+            sliderMode = menu.mode();
+            slider.updateRange(sliderMode.min(), sliderMode.max(), menu.targetTemperature());
+            exactTemperature.setValue(Integer.toString(menu.targetTemperature()));
+        } else if (receivedInitialState && sliderMode != menu.mode()) {
+            sliderMode = menu.mode();
+            slider.updateRange(sliderMode.min(), sliderMode.max(), menu.targetTemperature());
+            exactTemperature.setValue(Integer.toString(menu.targetTemperature()));
+        }
     }
 
     private void sendTarget(int target) {
@@ -125,8 +150,8 @@ public final class ThermalGeneratorScreen extends AbstractContainerScreen<Therma
 
     private static final class TemperatureSlider extends AbstractSliderButton {
 
-        private final int min;
-        private final int max;
+        private int min;
+        private int max;
         private final IntConsumer callback;
         private int lastSent;
 
@@ -157,6 +182,12 @@ public final class ThermalGeneratorScreen extends AbstractContainerScreen<Therma
 
         private int selected() {
             return min + (int) Math.round(value * (max - min));
+        }
+
+        private void updateRange(int min, int max, int selected) {
+            this.min = min;
+            this.max = max;
+            setSelected(selected);
         }
 
         private void setSelected(int selected) {
