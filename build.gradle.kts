@@ -68,6 +68,7 @@ cloche {
 
         dependencies {
             modImplementation("maven.modrinth:3ufwT9JF:9pnKHdCG")
+            modImplementation("earth.terrarium.common_storage_lib:common-storage-lib-neoforge-$minecraftVersion:0.0.10")
         }
     }
 
