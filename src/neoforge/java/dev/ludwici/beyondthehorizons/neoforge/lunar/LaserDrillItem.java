@@ -98,7 +98,7 @@ public final class LaserDrillItem extends Item {
         progress.ticks++;
         if (progress.ticks < TICKS_TO_MINE) {
             int crackStage = Math.min(9, progress.ticks * 10 / TICKS_TO_MINE);
-            level.destroyBlockProgress(player.getId(), pos, crackStage);
+            level.destroyBlockProgress(breakAnimationId(player), pos, crackStage);
             return;
         }
 
@@ -125,8 +125,12 @@ public final class LaserDrillItem extends Item {
     private static void resetProgress(ServerPlayer player) {
         MiningProgress progress = PROGRESS.remove(player);
         if (progress != null) {
-            player.serverLevel().destroyBlockProgress(player.getId(), progress.target, -1);
+            player.serverLevel().destroyBlockProgress(breakAnimationId(player), progress.target, -1);
         }
+    }
+
+    private static int breakAnimationId(ServerPlayer player) {
+        return -player.getId();
     }
 
     private static boolean isLunarCrystal(BlockState state) {
