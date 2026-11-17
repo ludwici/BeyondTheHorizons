@@ -1,9 +1,9 @@
 {
   "type": "beyond_the_horizons:neptune",
   "generator": {
-    "type": "minecraft:flat",
+    "type": "beyond_the_horizons:neptune_layered",
     "settings": {
-      "biome": "beyond_the_horizons:neptune_ice_sheet",
+      "biome": "beyond_the_horizons:cobalt_plains",
       "features": true,
       "lakes": false,
       "layers": [
@@ -25,6 +25,13 @@
         }
       ],
       "structure_overrides": []
+    },
+    "biome_source": {
+      "type": "beyond_the_horizons:neptune",
+      "cobalt_plains": "beyond_the_horizons:cobalt_plains",
+      "methane_drifts": "beyond_the_horizons:methane_drifts",
+      "neptunian_ocean": "beyond_the_horizons:neptunian_ocean",
+      "pressure_abyss": "beyond_the_horizons:pressure_abyss"
     }
   }
 }

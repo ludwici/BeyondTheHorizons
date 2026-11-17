@@ -1,5 +1,9 @@
 {
   "planet.beyond_the_horizons.neptune": "Neptune",
   "planet.beyond_the_horizons.neptune_orbit": "Neptune Orbit",
-  "biome.beyond_the_horizons.neptune_ice_sheet": "Neptune Ice Sheet"
+  "biome.beyond_the_horizons.neptune_ice_sheet": "Neptune Ice Sheet",
+  "biome.beyond_the_horizons.cobalt_plains": "Cobalt Plains",
+  "biome.beyond_the_horizons.methane_drifts": "Methane Drifts",
+  "biome.beyond_the_horizons.neptunian_ocean": "Neptunian Ocean",
+  "biome.beyond_the_horizons.pressure_abyss": "Pressure Abyss"
 }

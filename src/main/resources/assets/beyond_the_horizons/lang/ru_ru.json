@@ -1,5 +1,9 @@
 {
   "planet.beyond_the_horizons.neptune": "Нептун",
   "planet.beyond_the_horizons.neptune_orbit": "Орбита Нептуна",
-  "biome.beyond_the_horizons.neptune_ice_sheet": "Ледяной покров Нептуна"
+  "biome.beyond_the_horizons.neptune_ice_sheet": "Ледяной покров Нептуна",
+  "biome.beyond_the_horizons.cobalt_plains": "Кобальтовые равнины",
+  "biome.beyond_the_horizons.methane_drifts": "Метановые наносы",
+  "biome.beyond_the_horizons.neptunian_ocean": "Нептунианский океан",
+  "biome.beyond_the_horizons.pressure_abyss": "Бездна высокого давления"
 }
