@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,wall=false": {
       "model": "beyond_the_horizons:block/temperature_display"
     },
-    "facing=east": {
+    "facing=east,wall=false": {
       "model": "beyond_the_horizons:block/temperature_display",
       "y": 90
     },
-    "facing=south": {
+    "facing=south,wall=false": {
       "model": "beyond_the_horizons:block/temperature_display",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,wall=false": {
       "model": "beyond_the_horizons:block/temperature_display",
+      "y": 270
+    },
+    "facing=north,wall=true": {
+      "model": "beyond_the_horizons:block/temperature_display_wall"
+    },
+    "facing=east,wall=true": {
+      "model": "beyond_the_horizons:block/temperature_display_wall",
+      "y": 90
+    },
+    "facing=south,wall=true": {
+      "model": "beyond_the_horizons:block/temperature_display_wall",
+      "y": 180
+    },
+    "facing=west,wall=true": {
+      "model": "beyond_the_horizons:block/temperature_display_wall",
       "y": 270
     }
   }
