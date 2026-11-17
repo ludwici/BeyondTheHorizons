@@ -17,6 +17,10 @@ public final class VenusWorldgen {
             FEATURES.register("venus_anhydrite_crust",
                     () -> new VenusAnhydriteFeature(NoneFeatureConfiguration.CODEC));
 
+    public static final DeferredHolder<Feature<?>, VenusianCompositeFeature> VENUSIAN_COMPOSITE =
+            FEATURES.register("venusian_composite",
+                    () -> new VenusianCompositeFeature(NoneFeatureConfiguration.CODEC));
+
     private VenusWorldgen() {
     }
 

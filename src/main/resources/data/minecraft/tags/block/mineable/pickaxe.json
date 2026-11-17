@@ -3,6 +3,8 @@
   "values": [
     "beyond_the_horizons:spacey_workbench",
     "beyond_the_horizons:temperature_generator",
-    "beyond_the_horizons:temperature_display"
+    "beyond_the_horizons:temperature_display",
+    "beyond_the_horizons:venusian_composite",
+    "beyond_the_horizons:stabilized_venusian_composite"
   ]
 }

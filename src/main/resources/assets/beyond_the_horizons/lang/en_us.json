@@ -70,5 +70,9 @@
   "status.beyond_the_horizons.thermal.3": "Insufficient energy",
   "status.beyond_the_horizons.thermal.4": "Target already met",
   "block.beyond_the_horizons.temperature_generator": "Temperature Generator",
-  "block.beyond_the_horizons.temperature_display": "Temperature Display"
+  "block.beyond_the_horizons.temperature_display": "Temperature Display",
+  "block.beyond_the_horizons.venusian_composite": "Hot Venusian Composite",
+  "block.beyond_the_horizons.stabilized_venusian_composite": "Stabilized Venusian Composite",
+  "item.beyond_the_horizons.corundum_fragment": "Corundum Fragment",
+  "item.beyond_the_horizons.ceramic_insulator": "Ceramic Insulator"
 }

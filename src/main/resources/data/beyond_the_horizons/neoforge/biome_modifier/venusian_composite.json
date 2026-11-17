@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "ad_astra:venus_wastelands",
+    "ad_astra:infernal_venus_barrens"
+  ],
+  "features": "beyond_the_horizons:venusian_composite",
+  "step": "underground_ores"
+}

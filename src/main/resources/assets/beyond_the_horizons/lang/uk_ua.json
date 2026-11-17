@@ -70,5 +70,9 @@
   "status.beyond_the_horizons.thermal.3": "Недостатньо енергії",
   "status.beyond_the_horizons.thermal.4": "Ціль уже досягнута",
   "block.beyond_the_horizons.temperature_generator": "Генератор температури",
-  "block.beyond_the_horizons.temperature_display": "Температурне табло"
+  "block.beyond_the_horizons.temperature_display": "Температурне табло",
+  "block.beyond_the_horizons.venusian_composite": "Гаряча композитна порода Венери",
+  "block.beyond_the_horizons.stabilized_venusian_composite": "Стабілізована композитна порода",
+  "item.beyond_the_horizons.corundum_fragment": "Уламок корунду",
+  "item.beyond_the_horizons.ceramic_insulator": "Керамічний ізолятор"
 }

@@ -10,6 +10,7 @@ import dev.ludwici.beyondthehorizons.neoforge.items.DivingSuitItems;
 import dev.ludwici.beyondthehorizons.neoforge.lunar.LunarCrystalRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.mars.MartianHematiteRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.venus.VenusAnhydriteRegistry;
+import dev.ludwici.beyondthehorizons.neoforge.venus.VenusianCompositeRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.VenusWorldgen;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.MartianWorldgen;
 import dev.ludwici.beyondthehorizons.neoforge.probe.SpaceYRegistry;
@@ -33,6 +34,7 @@ public final class BeyondTheHorizonsNeoForge {
         LunarCrystalRegistry.register(modBus);
         MartianHematiteRegistry.register(modBus);
         VenusAnhydriteRegistry.register(modBus);
+        VenusianCompositeRegistry.register(modBus);
         SpaceYRegistry.register(modBus);
         ThermalGeneratorRegistry.register(modBus);
         BeyondTheHorizonsCreativeTabs.register(modBus);

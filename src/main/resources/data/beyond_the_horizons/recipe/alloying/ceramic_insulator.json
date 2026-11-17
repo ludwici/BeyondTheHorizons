@@ -1,0 +1,17 @@
+{
+  "type": "ad_astra:alloying",
+  "cookingtime": 160,
+  "energy": 20,
+  "ingredients": [
+    {
+      "item": "beyond_the_horizons:corundum_fragment"
+    },
+    {
+      "item": "beyond_the_horizons:raw_anhydrite"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:ceramic_insulator"
+  }
+}

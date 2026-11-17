@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "cooling=0": {
+      "model": "beyond_the_horizons:block/venusian_composite"
+    },
+    "cooling=1": {
+      "model": "beyond_the_horizons:block/venusian_composite"
+    },
+    "cooling=2": {
+      "model": "beyond_the_horizons:block/venusian_composite"
+    },
+    "cooling=3": {
+      "model": "beyond_the_horizons:block/venusian_composite"
+    },
+    "cooling=4": {
+      "model": "beyond_the_horizons:block/venusian_composite_cooling"
+    },
+    "cooling=5": {
+      "model": "beyond_the_horizons:block/venusian_composite_cooling"
+    },
+    "cooling=6": {
+      "model": "beyond_the_horizons:block/venusian_composite_cooling"
+    },
+    "cooling=7": {
+      "model": "beyond_the_horizons:block/venusian_composite_cooling"
+    },
+    "cooling=8": {
+      "model": "beyond_the_horizons:block/venusian_composite_fissured"
+    },
+    "cooling=9": {
+      "model": "beyond_the_horizons:block/venusian_composite_fissured"
+    },
+    "cooling=10": {
+      "model": "beyond_the_horizons:block/venusian_composite_fissured"
+    },
+    "cooling=11": {
+      "model": "beyond_the_horizons:block/venusian_composite_fissured"
+    }
+  }
+}
