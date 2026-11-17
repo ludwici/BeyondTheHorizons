@@ -43,5 +43,11 @@
   "probe.beyond_the_horizons.environment.water": "Вода",
   "probe.beyond_the_horizons.environment.atmosphere": "Атмосфера",
   "button.beyond_the_horizons.disassemble": "Разобрать",
-  "tooltip.beyond_the_horizons.probe_reconfigure": "Для замены модулей разберите зонд в верстаке SpaceY"
+  "tooltip.beyond_the_horizons.probe_reconfigure": "Для замены модулей разберите зонд в верстаке SpaceY",
+  "item.beyond_the_horizons.lunar_crystal": "Лунный кристалл",
+  "block.beyond_the_horizons.lunar_crystal_block": "Блок лунного кристалла",
+  "block.beyond_the_horizons.lunar_crystal_cluster": "Скопление лунных кристаллов",
+  "item.beyond_the_horizons.laser_drill": "Лазерный бур",
+  "tooltip.beyond_the_horizons.laser_drill_energy": "Энергия: %s / %s FE",
+  "tooltip.beyond_the_horizons.laser_drill_function": "Для добычи необходим заряженный лазерный бур"
 }

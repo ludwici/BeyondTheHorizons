@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "beyond_the_horizons:lunar_crystal",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 4
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:match_tool",
+              "predicate": {
+                "items": "beyond_the_horizons:laser_drill"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "beyond_the_horizons:blocks/lunar_crystal"
+}

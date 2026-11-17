@@ -43,5 +43,11 @@
   "probe.beyond_the_horizons.environment.water": "Water",
   "probe.beyond_the_horizons.environment.atmosphere": "Atmosphere",
   "button.beyond_the_horizons.disassemble": "Disassemble",
-  "tooltip.beyond_the_horizons.probe_reconfigure": "Use Disassemble in SpaceY Workbench to replace modules"
+  "tooltip.beyond_the_horizons.probe_reconfigure": "Use Disassemble in SpaceY Workbench to replace modules",
+  "item.beyond_the_horizons.lunar_crystal": "Lunar Crystal",
+  "block.beyond_the_horizons.lunar_crystal_block": "Lunar Crystal Block",
+  "block.beyond_the_horizons.lunar_crystal_cluster": "Lunar Crystal Cluster",
+  "item.beyond_the_horizons.laser_drill": "Laser Drill",
+  "tooltip.beyond_the_horizons.laser_drill_energy": "Energy: %s / %s FE",
+  "tooltip.beyond_the_horizons.laser_drill_function": "Requires charged Laser Drill to mine"
 }

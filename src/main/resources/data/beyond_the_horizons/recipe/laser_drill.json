@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " OR",
+    "DCG",
+    "SD "
+  ],
+  "key": {
+    "O": {
+      "tag": "ad_astra:ostrum_plates"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "D": {
+      "tag": "ad_astra:desh_plates"
+    },
+    "C": {
+      "item": "ad_astra:etrionic_capacitor"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "beyond_the_horizons:laser_drill"
+  }
+}
