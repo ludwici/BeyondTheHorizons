@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "SCS",
+    "RIR",
+    "SDS"
+  ],
+  "key": {
+    "S": {
+      "tag": "ad_astra:steel_plates"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "I": {
+      "item": "minecraft:packed_ice"
+    },
+    "D": {
+      "tag": "ad_astra:desh_plates"
+    }
+  },
+  "result": {
+    "id": "beyond_the_horizons:cold_generator",
+    "count": 1
+  }
+}

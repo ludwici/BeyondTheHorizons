@@ -59,5 +59,18 @@
   "item.beyond_the_horizons.precision_servo": "Прецизионный сервопривод",
   "item.beyond_the_horizons.stabilization_module": "Стабилизирующий модуль",
   "block.beyond_the_horizons.anhydrite_crust": "Ангидритовая корка",
-  "item.beyond_the_horizons.raw_anhydrite": "Сырой ангидрит"
+  "item.beyond_the_horizons.raw_anhydrite": "Сырой ангидрит",
+  "block.beyond_the_horizons.heat_generator": "Генератор тепла",
+  "block.beyond_the_horizons.cold_generator": "Генератор холода",
+  "screen.beyond_the_horizons.target": "Цель: %s °C",
+  "screen.beyond_the_horizons.actual": "Текущая: %s °C",
+  "screen.beyond_the_horizons.energy": "FE: %s / %s (%s/тик)",
+  "screen.beyond_the_horizons.volume": "Помещение: %s блоков",
+  "button.beyond_the_horizons.apply": "Применить",
+  "screen.beyond_the_horizons.temperature_target": "Целевая температура",
+  "status.beyond_the_horizons.thermal.0": "Неактивен",
+  "status.beyond_the_horizons.thermal.1": "Работает",
+  "status.beyond_the_horizons.thermal.2": "Помещение негерметично",
+  "status.beyond_the_horizons.thermal.3": "Недостаточно энергии",
+  "status.beyond_the_horizons.thermal.4": "Цель уже достигнута"
 }

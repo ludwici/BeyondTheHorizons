@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "beyond_the_horizons:block/cold_generator"
+    },
+    "facing=east": {
+      "model": "beyond_the_horizons:block/cold_generator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "beyond_the_horizons:block/cold_generator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "beyond_the_horizons:block/cold_generator",
+      "y": 270
+    }
+  }
+}

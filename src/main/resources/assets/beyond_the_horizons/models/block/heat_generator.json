@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "beyond_the_horizons:block/temperature_top",
+    "side": "beyond_the_horizons:block/temperature_side",
+    "front": "beyond_the_horizons:block/temperature_heat",
+    "particle": "beyond_the_horizons:block/temperature_side"
+  }
+}

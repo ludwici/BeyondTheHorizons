@@ -59,5 +59,18 @@
   "item.beyond_the_horizons.precision_servo": "Прецизійний сервопривід",
   "item.beyond_the_horizons.stabilization_module": "Стабілізувальний модуль",
   "block.beyond_the_horizons.anhydrite_crust": "Ангідритова кірка",
-  "item.beyond_the_horizons.raw_anhydrite": "Сирий ангідрит"
+  "item.beyond_the_horizons.raw_anhydrite": "Сирий ангідрит",
+  "block.beyond_the_horizons.heat_generator": "Генератор тепла",
+  "block.beyond_the_horizons.cold_generator": "Генератор холоду",
+  "screen.beyond_the_horizons.target": "Ціль: %s °C",
+  "screen.beyond_the_horizons.actual": "Поточна: %s °C",
+  "screen.beyond_the_horizons.energy": "FE: %s / %s (%s/тік)",
+  "screen.beyond_the_horizons.volume": "Приміщення: %s блоків",
+  "button.beyond_the_horizons.apply": "Застосувати",
+  "screen.beyond_the_horizons.temperature_target": "Цільова температура",
+  "status.beyond_the_horizons.thermal.0": "Неактивний",
+  "status.beyond_the_horizons.thermal.1": "Працює",
+  "status.beyond_the_horizons.thermal.2": "Приміщення негерметичне",
+  "status.beyond_the_horizons.thermal.3": "Недостатньо енергії",
+  "status.beyond_the_horizons.thermal.4": "Ціль уже досягнута"
 }

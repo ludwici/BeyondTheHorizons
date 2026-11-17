@@ -13,6 +13,7 @@ import dev.ludwici.beyondthehorizons.neoforge.venus.VenusAnhydriteRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.VenusWorldgen;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.MartianWorldgen;
 import dev.ludwici.beyondthehorizons.neoforge.probe.SpaceYRegistry;
+import dev.ludwici.beyondthehorizons.neoforge.thermal.ThermalGeneratorRegistry;
 import dev.ludwici.beyondthehorizons.neoforge.worldgen.NeptuneWorldgen;
 import earth.terrarium.adastra.api.events.AdAstraEvents;
 import net.minecraft.tags.FluidTags;
@@ -33,6 +34,7 @@ public final class BeyondTheHorizonsNeoForge {
         MartianHematiteRegistry.register(modBus);
         VenusAnhydriteRegistry.register(modBus);
         SpaceYRegistry.register(modBus);
+        ThermalGeneratorRegistry.register(modBus);
         BeyondTheHorizonsCreativeTabs.register(modBus);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(EnvironmentEvents::onPlayerLogout);
